@@ -1,0 +1,24 @@
+/* 메인 컨테이너  */
+.Hcontainer{
+    height: 60px;
+    display: flex;
+    flex-direction: row;   
+}
+
+    /* 메인 컨테이너 왼쪽 */
+    .Hcontainer_left{
+        display: flex;
+        flex-direction: row;  
+    }
+
+    /* 메인 컨테이너 중간 */
+    .Hcontainer_center{
+        display: flex;
+        flex-direction: row;  
+    }
+
+    /* 메인 컨테이너 오른쪽 */
+    .Hcontainer_right{
+        display: flex;
+        flex-direction: row;  
+    }
