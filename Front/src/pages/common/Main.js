@@ -15,6 +15,10 @@ export const Main = () => {
                 />
 
                 <div className='Mtop_content'>
+                    <h2>내용입니다</h2>
+                </div>
+
+                <div className='Mtop_overlay'>
 
                 </div>
             </div>
