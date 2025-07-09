@@ -1,0 +1,28 @@
+server:
+ port: 5000
+
+spring:
+ application:
+  name: homeproject
+  
+ sql:
+  init:
+   mode: always
+
+ datasource:
+  #나중에 aws에 연동할때 localhost를 RDS의 엔드포인트로 변경 및 아이디 비밀번호 변경.
+  url: jdbc:mysql://localhost:3306/homeproject
+  username: root
+  password: 1234
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  
+ jpa:
+  defer-datasource-initialization: true
+  open-in-view: false
+  show-sql: true
+  hibernate:
+   ddl-auto: create
+  properties:
+   hibernate:
+    format_sql: true
+

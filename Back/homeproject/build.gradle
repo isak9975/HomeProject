@@ -34,6 +34,18 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	
+	// mysql
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6' // 또는 jjwt-gson
+	
+	// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations
+	implementation 'io.swagger.core.v3:swagger-annotations:2.2.33'
+	
 }
 
 tasks.named('test') {
