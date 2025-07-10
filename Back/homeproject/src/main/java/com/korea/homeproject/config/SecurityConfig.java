@@ -36,7 +36,10 @@ public class SecurityConfig {
 			.authorizeHttpRequests(auth -> auth
 					.requestMatchers(
 							"/",
-							"/auth/**"
+							"/auth/**",
+							"/swagger-ui/**",
+							"/swagger-ui.html",
+							"/v/api-docs/**"
 							).permitAll() //인증없이 접근 허용
 					.anyRequest().authenticated() //나머지는 인증 필요
 					);

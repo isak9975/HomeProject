@@ -1,24 +1,91 @@
 /* 메인 컨테이너  */
 .Hcontainer{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 60px;
     display: flex;
     flex-direction: row;   
+    background-color: 	#4b5563;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    justify-content: space-between;
+
+    z-index: 999;
 }
 
     /* 메인 컨테이너 왼쪽 */
     .Hcontainer_left{
         display: flex;
-        flex-direction: row;  
+        flex-direction: row;
+        align-items: center;
+    }
+
+    /* 로고 */
+    .Hlogoicon{
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(to bottom right, #64748b, #475569);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin:0 12px;
+    }
+    .Hlogotext{
+       color: white; 
+       font-weight: 600;
+       font-size: 14px;
+       text-decoration: none;
+    }
+
+    .Hlogotextto{
+        color:'white';
+        font-weight: 600;
+        font-size: 18px;
     }
 
     /* 메인 컨테이너 중간 */
     .Hcontainer_center{
         display: flex;
         flex-direction: row;  
+        align-items: center;
+        margin-left: 32px;
+    }
+
+    .Hblogbutton{
+        color:#e5e7eb;
+        font-weight: 500;
+        text-decoration: none;
+        transition : color 0.2s ease
     }
 
     /* 메인 컨테이너 오른쪽 */
     .Hcontainer_right{
+        margin-right: 12px;
         display: flex;
         flex-direction: row;  
+        align-items: center;
+        gap: 12px;
+    }
+
+    .Hloginbutton{
+        text-decoration: none;
+        color: #d1d5db;
+        font-size: 14px;
+        padding : 4px 12px;
+        border:'none';
+        background-color: transparent;
+        transition: all 0.2s ease;
+    }
+
+    .Hregisterbutton{
+        text-decoration: none;
+        background-color: #475569;
+        color: #e5e7eb;
+        font-size: 14px;
+        padding : 4px 12px;
+        border-radius: 6px;
+        border :none;
+        transition: all 0.2s ease;
     }

@@ -8,7 +8,7 @@ spring:
  sql:
   init:
    mode: always
-
+   
  datasource:
   #나중에 aws에 연동할때 localhost를 RDS의 엔드포인트로 변경 및 아이디 비밀번호 변경.
   url: jdbc:mysql://localhost:3306/homeproject
@@ -21,8 +21,19 @@ spring:
   open-in-view: false
   show-sql: true
   hibernate:
-   ddl-auto: create
+   ddl-auto: update
   properties:
    hibernate:
     format_sql: true
 
+springdoc:
+ api-docs:
+  path: /v/api-docs
+  #OpenAPI 명세가 노출되는 경로 설정
+  #기본값은 /v3/api/docs
+  #브라우저에서 확인가능하다 : http://localhost:포트/v3/api-docs
+ swagger-ui:
+  path: /swagger-ui.html
+  #SwaggerUI 웹페이지 접속 경로 설정
+  #기본값은 /swagger-ui/index.html
+  #이 설정을 통해 /swagger-ui.html로 간편하게 접속 가능하다.

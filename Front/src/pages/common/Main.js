@@ -1,4 +1,6 @@
+import {Button} from 'react-bootstrap'
 import './Main.css'
+import { useEffect, useState } from 'react'
 
 export const Main = () => {
     return(

@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.korea.homeproject.dto.BoardDTO;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -40,10 +41,13 @@ public class BoardEntity {
 	private String boardImg;
 	
 	//좋아용
+	@Column(columnDefinition = "INT DEFAULT 0")
 	private int boardLike;
+	@Column(columnDefinition = "INT DEFAULT 0")
 	private int boardUnLike;
 	
 	//조회수
+	@Column(columnDefinition = "INT DEFAULT 0")
 	private int boardView;
 	
 	//날짜
