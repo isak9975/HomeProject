@@ -12,6 +12,7 @@ INSERT INTO usertable (
     user_password,
     user_nickname,
     user_img,
+    user_role,
     user_create_at,
     user_update_at
     ) VALUES (
@@ -19,6 +20,7 @@ INSERT INTO usertable (
     '$2a$10$hC3rU3P2UrXSZtHgLDkvI.a1YaHs0T5YgQ22SS1c2wq.QSSxK9wbS',
     '관리자1',
     'default.jpg',
+    'admin',
     now(),
     now()
 );

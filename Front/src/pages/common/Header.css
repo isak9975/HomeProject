@@ -51,6 +51,7 @@
         flex-direction: row;  
         align-items: center;
         margin-left: 32px;
+        gap: 30px;
     }
 
     .Hblogbutton{

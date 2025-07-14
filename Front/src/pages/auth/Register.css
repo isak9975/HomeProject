@@ -24,6 +24,10 @@
         position: relative
     }
 
+    .Rprofileimgtext{
+        font-size: 12px;
+    }
+
     .Rprofileicon{
         border-radius: 50%;
         width: 90px;

@@ -25,6 +25,8 @@ public class UserDTO {
 	private String userPassword;
 	@Schema(description = "유저 프로필 이미지",example = "default.jpg")
 	private String userImg;
+	@Schema(description = "유저 권한 상태",example = "user")
+	private String role;
 	
 	@Schema(description = "유저 로그인 토큰",example = "--")
 	private String token;
@@ -40,6 +42,7 @@ public class UserDTO {
 					.userNo(userNo)
 					.userEmail(userEmail)
 					.userImg(userImg)
+					.role(role)
 					.userNickname(userNickname)
 					.userPassword(userPassword)
 					.userUpdatedAt(userUpdatedAt)

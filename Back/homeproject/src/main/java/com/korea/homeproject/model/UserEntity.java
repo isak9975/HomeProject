@@ -44,6 +44,9 @@ public class UserEntity {
 	@Column(name = "userImg")
 	private String userImg;
 	
+	@Column(name= "userRole")
+	private String role;
+	
 	
 	@CreationTimestamp
 	@Column(name = "userCreateAt")
@@ -61,6 +64,7 @@ public class UserEntity {
 					.userNickname(userNickname)
 					.userPassword(userPassword)
 					.userImg(userImg)
+					.role(role)
 					.userCreateAt(userCreateAt)
 					.userUpdatedAt(userUpdatedAt)
 				.build();		

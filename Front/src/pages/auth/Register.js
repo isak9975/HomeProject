@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {TextField, Button, Alert} from '@mui/material'
-import './Register.css'
+import Swal from 'sweetalert2'
 import { API } from '../common/API'
+import './Register.css'
 
 export const Register = () => {
 
@@ -15,35 +16,38 @@ export const Register = () => {
     const [passwordConfirm,setPasswordConfirm] = useState("");
     // 사용자 입력 에러
     const [error,setError] = useState({
-        message:'', password:false, email:false, nickname:false
+        message:' ', password:false, email:false, nickname:false
     });
-    // 회원가입 버튼 건드렸는지
-    const [isTouch,setIsTouch] = useState(false);
     // 가입자 데이터
     const [formData,setFormData] = useState({
-        userNickname:'', userEmail:'',userImg:'',userPassowrd:''
+        userNickname:'', userEmail:'',userImg:'',userPassword:''
     })
 
 
     useEffect(()=>{
 
-        formData.userPassowrd !== passwordConfirm?setError(prev=>({...prev,message:'비밀번호가 일치 하지 않습니다'})):setError(prev=>({...prev,message:''}))
-        
-        if(!isTouch) return
-
-        if(!formData.userEmail===""){
+        if(formData.userEmail===""){
             setError(prev=>({...prev,message:"이메일은 필수 입니다"}))
-        }else if(''){
+            return
+        }else if(formData.userNickname===""){
             setError(prev=>({...prev,message:"닉네임은 필수 입니다"}))
-        }else if(''){
+            return
+        }else if(formData.userNickname?.length<=1||formData.userNickname?.length>20){
+            setError(prev=>({...prev,message:"닉네임은 1글자 이상, 20글자 이하로 입력해주세요"}))
+            return
+        }else if(formData.userPassword===""){
             setError(prev=>({...prev,message:"비밀번호를 입력해주세요"}))
-        }else if(''){
-            setError(prev=>({...prev,message:""}))
+            return
+        }else if(formData.userPassword?.length<8||formData.userPassword?.length>20){
+            setError(prev=>({...prev,message:`비밀번호는 8글자 이상 20글자 이하로 입력해주세요`}))
+            return
         }else{
             setError(prev=>({...prev,message:""}))
         }
 
-    },[formData,error,passwordConfirm])
+        formData.userPassword !== passwordConfirm?setError(prev=>({...prev,message:'비밀번호가 일치 하지 않습니다'})):setError(prev=>({...prev,message:''}))
+
+    },[formData.userPassword,formData.userEmail,formData.userNickname,passwordConfirm])
 
 
     const handleDragOver = (e) => {
@@ -90,8 +94,19 @@ export const Register = () => {
 
     //(중요)회원가입 버튼 클릭
     const handleRegister = async () => {
-        setIsTouch(true)
-        //1) 의사 물어보기
+        //1) 의사 물어보기 
+        const result = await Swal.fire({
+            title :'회원가입 하시겠습니까?',
+            icon:'question',
+            showCancelButton:true,
+            cancelButtonText:'아니요',
+            confirmButtonText:'네',
+        })
+
+        if(!result.isConfirmed) return //여기서 함수 자체 종료
+        
+        if(error.message!=="") return
+
 
         console.log("세팅된 사진 :",formData.userImg)
         //2) 이미지 파일 백엔드에 저장 후 접근 URL받기
@@ -100,6 +115,7 @@ export const Register = () => {
         imageForm.append("userEmail",formData.userEmail);
             // 폴더위치
         imageForm.append("folder",'userImg');
+
         let imageUrl = null;
 
         try {
@@ -108,35 +124,51 @@ export const Register = () => {
                 body:imageForm
             })
             const result = await uploadImg.json();
-            imageUrl = result.imageUrl;
-            setFormData(prev=>({...prev,userImg:imageUrl}))
-            console.log(result)
+            imageUrl = result.fileUrl;
+            // console.log('result=reulst.fileUrl',result)
+            // console.log('imageUrl',imageUrl)
+            // console.log('result.fileUrl',result.fileUrl)
         } catch (error) {
             console.log(error)
         }
 
         //3) 회원가입 진행
-        if(formData.userImg===''){
-            setFormData(prev=>({...prev,userImg:'https://home-project-file.s3.ap-northeast-2.amazonaws.com/userImg/defaultimg.png'}))
-        }
+        // if(formData.userImg===''){
+        //     // 기본이미지 세팅
+        //     setFormData(prev=>({...prev,userImg:'https://home-project-file.s3.ap-northeast-2.amazonaws.com/userImg/defaultimg.png'}))
+        // }
+
+        const signupData = {
+            ...formData,
+            userImg:imageUrl||'https://home-project-file.s3.ap-northeast-2.amazonaws.com/userImg/defaultimg.png',
+            role:'user'
+        };
+
         const option = {
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
             },
-            body : JSON.stringify(formData)
+            body : JSON.stringify(signupData)
         }
+        console.log('보내는 데이터',signupData)
+        // console.log('JSON 데이터',JSON.stringify(formData))
+        
 
         try {
-            const response = await fetch(`${API}/signup`,option)
+            const response = await fetch(`${API}/auth/signup`,option)
 
             const list = await response.json()
 
             console.log(list.legnth>0,"저장 성공")
-            console.log("저장 데이터",formData)
+            console.log("저장 데이터",signupData)
         } catch (error) {
             console.log(error)
         } finally{
+            const result = await Swal.fire({
+            title :'회원가입이 완료되었습니다',
+            icon:'success',
+            })
             navigate('/login')
         }
     }
@@ -169,7 +201,7 @@ export const Register = () => {
                             }}
                         >
                             {/* 프로필 사진 예시*/}
-                            <img src={preView} className='Rprofileicon'/>
+                            {preView&&<img src={preView} className='Rprofileicon'/>}
 
                             {/* 안내 정보 */}
                             {!preView&&
@@ -234,6 +266,8 @@ export const Register = () => {
                                 if(e.target.value.length <=20){
                                     setFormData(prev=>({...prev,userPassword:e.target.value}))
                                 }
+                                // console.log('formData.userpassword',formData.userPassword)
+                                // console.log('e.target.value',e.target.value)
                             }}
                             
                             placeholder='비밀번호를 입력해주세요'
@@ -249,6 +283,9 @@ export const Register = () => {
                                 if(e.target.value.length <=20){
                                     setPasswordConfirm(e.target.value)
                                 }
+                                // console.log('passwordConfirm',passwordConfirm)
+                                // console.log('formData.userpassword',formData.userPassword)
+                                // console.log('e.target.value',e.target.value)
                             }}
                             error={error.password}
                             placeholder='비밀번호를 다시 한번 입력해주세요'
@@ -262,6 +299,7 @@ export const Register = () => {
                 </div>
                 <Button fullWidth variant='contained' className='Rbutton'
                     onClick={handleRegister}
+                    disabled={(error.message)}
                 >회원가입</Button>
                 <div>
                     <span style={{fontSize:'12px', marginRight:'5px'}}>계정이 있으신가요?</span>

@@ -1,12 +1,15 @@
 import {BrowserRouter} from 'react-router-dom'
 import { Navigation } from '../navigation/Navigation'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { UserProvider } from '../contexts/UserContext';
 
 export const App = () => {
 
     return(
         <BrowserRouter>
-            <Navigation/>
+            <UserProvider>
+                <Navigation/>
+            </UserProvider>
         </BrowserRouter>
     )
 }

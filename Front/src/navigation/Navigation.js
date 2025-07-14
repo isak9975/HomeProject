@@ -1,13 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom'
 import { Login } from '../pages/auth/Login'
 import { Register } from '../pages/auth/Register'
 import { Main } from '../pages/common/Main'
 import { Header } from '../pages/common/Header'
 import { Footer } from '../pages/common/Footer'
-import { Blog } from '../pages/Blog'
+import { Blog } from '../pages/Blog' 
+import { Contact } from '../pages/Contact';
+import { UserContext } from '../contexts/UserContext';
 
 const AppLayout = () => {
+
+    const {isAdim, isLogin,user} = useContext(UserContext);
+    console.log(user)
 
     const styles={
         Asidebar:{
@@ -96,10 +101,10 @@ const AppLayout = () => {
         return(
             <aside style={styles.Asidebar}>
                 <div>
-                    <span style={styles.maintext}>사이드 바입니다</span><br/>
-                    <span style={styles.maintextside}>안녕하세요 사용자님</span>
+                    <span style={styles.maintext}>{isLogin?`${user.role} 계정입니다`:'사이드 바입니다'}</span><br/>
+                    <span style={styles.maintextside}>{isLogin?`${user.userNickname}님 안녕하세요`:'안녕하세요 사용자님'}</span>
                     <div style={styles.profile}>                    
-                        <img style={styles.profileimage} src='/media/profile.png'/>
+                        <img style={styles.profileimage} src={isLogin?`${user.userImg}`:'/media/profile.png'}/>
                     </div>
                 </div>
                 <div style={styles.sidebarcenter}>
@@ -153,6 +158,7 @@ export const Navigation = () =>{
 
                 <Route path='/' element={<AppLayout/>} >
                     <Route index element={<Main/>} />
+                    <Route path='contact' element={<Contact />}/>
                     <Route path='blog' element={<Blog />}/>
                 </Route>
             </Routes>

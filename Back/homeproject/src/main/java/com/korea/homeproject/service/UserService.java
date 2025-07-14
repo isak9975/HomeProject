@@ -52,7 +52,7 @@ public class UserService {
 		System.out.println("전달받는 dto"+dto);
 		//죽복 이메일 체크
 		if(userRepository.findByUserEmail(dto.getUserEmail()).isPresent()) {
-			new RuntimeException("이미 가입된 이메일입니다.");
+			throw new RuntimeException("이미 가입된 이메일입니다.");
 		}
 		
 		//비밀번호 암호화
