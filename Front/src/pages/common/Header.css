@@ -32,6 +32,10 @@
         justify-content: center;
         margin:0 12px;
     }
+        .Hlogoicon:active {
+            transform: scale(0.96);
+            opacity: 0.8;
+        }
     .Hlogotext{
        color: white; 
        font-weight: 600;
@@ -51,15 +55,32 @@
         flex-direction: row;  
         align-items: center;
         margin-left: 32px;
-        gap: 30px;
+        gap: 40px;
     }
 
-    .Hblogbutton{
-        color:#e5e7eb;
+    /* 메인 H버튼 */
+    .Hblogbutton {
+        color: #e5e7eb;
         font-weight: 500;
         text-decoration: none;
-        transition : color 0.2s ease
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
     }
+
+        .Hblogbutton:hover {
+            color: #facc15; 
+            background-color: #374151; 
+            border-color: #facc15;
+        }
+
+        .Hblogbutton:active {
+        transform: scale(0.96);
+        opacity: 0.8;
+        }
+
 
     /* 메인 컨테이너 오른쪽 */
     .Hcontainer_right{
@@ -70,23 +91,48 @@
         gap: 12px;
     }
 
+    /* 로그인버튼 */
     .Hloginbutton{
         text-decoration: none;
         color: #d1d5db;
         font-size: 14px;
         padding : 4px 12px;
-        border:'none';
         background-color: transparent;
-        transition: all 0.2s ease;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        transition: all 0.3s ease;
     }
 
+        .Hloginbutton:hover {
+            color: #facc15; 
+            background-color: #374151; 
+            border-color: #facc15;
+        }
+
+        .Hloginbutton:active {
+            transform: scale(0.96);
+            opacity: 0.8;
+        }
+
+    /* 회원가입버튼 */
     .Hregisterbutton{
         text-decoration: none;
         background-color: #475569;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        transition: all 0.3s ease;
         color: #e5e7eb;
         font-size: 14px;
         padding : 4px 12px;
-        border-radius: 6px;
-        border :none;
-        transition: all 0.2s ease;
     }
+
+        .Hregisterbutton:hover {
+            color: #facc15; 
+            background-color: #374151; 
+            border-color: #facc15;
+        }
+
+        .Hregisterbutton:active {
+            transform: scale(0.96);
+            opacity: 0.8;
+        }

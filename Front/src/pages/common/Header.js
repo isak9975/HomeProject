@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {UserContext} from '../../contexts/UserContext'
 import Swal from 'sweetalert2'
 import './Header.css'
@@ -6,6 +6,8 @@ import { useContext } from 'react'
 
 
 export const Header = () => {
+
+    const navigate = useNavigate();
 
     const {isAdmin,isLogin,setIsLogin,setIsAdmin} = useContext(UserContext);
 
@@ -25,6 +27,18 @@ export const Header = () => {
         }
     }
 
+    const handleGo = (path) =>{
+        if (!isLogin) {
+        Swal.fire({
+            title: '로그인이 필요합니다',
+            icon: 'warning',
+            confirmButtonText: '확인',
+        });
+      return;
+    }
+    navigate(path);
+    }
+
 
     return(
         <div className='Hcontainer'>
@@ -36,8 +50,8 @@ export const Header = () => {
             </div>
 
             <div className='Hcontainer_center'>
-                <Link className='Hblogbutton' to={'/blog'}>Community</Link>
-                <Link className='Hblogbutton' to={'/Contact'}>Contact</Link>
+                <div className='Hblogbutton' onClick={()=>handleGo('/blog')}>Community</div>
+                <div className='Hblogbutton' onClick={()=>handleGo('/contact')}>ContactMe</div>
             </div>
 
             <div className='Hcontainer_right'>
