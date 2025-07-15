@@ -17,6 +17,8 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
 	@Schema(description = "유저 고유 번호",example = "1")
 	private Long userNo;
+	@Schema(description = "유저 아이디",example = "user01")
+	private String userId;
 	@Schema(description = "유저 닉네임",example = "스웨거1")
 	private String userNickname;
 	@Schema(description = "유저 이메일",example = "example@example.com")
@@ -42,6 +44,7 @@ public class UserDTO {
 					.userNo(userNo)
 					.userEmail(userEmail)
 					.userImg(userImg)
+					.userId(userId)
 					.role(role)
 					.userNickname(userNickname)
 					.userPassword(userPassword)

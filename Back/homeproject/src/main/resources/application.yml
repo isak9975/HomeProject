@@ -6,10 +6,19 @@ spring:
   import: optional:dotenv:.env
  application:
   name: homeproject
+ mail:
+  host: smtp.gmail.com
+  port: 587
+  username: ${MYEMAIL}
+  password: ${MYEMAILPASSWORD}
+  properties:
+   mail.smtp.auth: true
+   mail.smtp.starttls.enable: true
   
  sql:
   init:
    mode: always
+   continue-on-error: true
    
  datasource:
   #나중에 aws에 연동할때 localhost를 RDS의 엔드포인트로 변경 및 아이디 비밀번호 변경.

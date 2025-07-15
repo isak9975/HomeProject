@@ -8,10 +8,14 @@ import { Footer } from '../pages/common/Footer'
 import { Blog } from '../pages/Blog' 
 import { Contact } from '../pages/Contact';
 import { UserContext } from '../contexts/UserContext';
+import { FindPassword } from '../pages/auth/FindPassword';
+import { FindUserId } from '../pages/auth/FindUserId';
+import { NewPassword } from '../pages/auth/NewPassword';
+import { BlogNavigation } from './BlogNavigation';
 
 const AppLayout = () => {
 
-    const {isAdim, isLogin,user} = useContext(UserContext);
+    const {isLogin,user} = useContext(UserContext);
     console.log(user)
 
     const styles={
@@ -155,11 +159,16 @@ export const Navigation = () =>{
                 {/* 인증 */}
                 <Route path='/login' element={<Login/>} />
                 <Route path='/register' element={<Register/>} />
+                <Route path='/findpassword' element={<FindPassword/>} />
+                <Route path='/newpassword' element={<NewPassword/>} />
+                <Route path='/finduserid' element={<FindUserId/>} />
 
                 <Route path='/' element={<AppLayout/>} >
                     <Route index element={<Main/>} />
                     <Route path='contact' element={<Contact />}/>
-                    <Route path='blog' element={<Blog />}/>
+                    <Route path='blog' element={<BlogNavigation />}>
+                        <Route path=':category' element={<Blog/>}/>
+                    </Route>
                 </Route>
             </Routes>
         </div>

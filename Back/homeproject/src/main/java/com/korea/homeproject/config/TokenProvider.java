@@ -18,12 +18,12 @@ public class TokenProvider {
 	private final long TOKEN_VALIDITY = 1000*60 * 60 *12; //12시간
 	
 	//토큰 생성
-	public String createToken(String userEmail) {
+	public String createToken(String userId) {
 		Date now = new Date();
 		Date expiryDate = new Date(now.getTime() + TOKEN_VALIDITY);
 		
 		return Jwts.builder()
-				.subject(userEmail)
+				.subject(userId)
 				.signWith(key)
 				.issuedAt(now)
 				.expiration(expiryDate)

@@ -8,4 +8,5 @@ import com.korea.homeproject.model.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	Optional<UserEntity> findByUserEmail(String userEmail);
+	Optional<UserEntity> findByUserId(String userId);
 }

@@ -10,10 +10,10 @@ export const Login = () =>{
 
     const navigate = useNavigate();
 
-    const {isAdmin,user,isLogin,setIsAdmin,setIsLogin,setUser} = useContext(UserContext);
+    const {setIsAdmin,setIsLogin,setUser} = useContext(UserContext);
 
     const [formData,setFormData] = useState({
-        userEmail:'', userPassword:''
+        userId:'', userPassword:''
     })
 
     // (중요) 로그인 
@@ -35,15 +35,19 @@ export const Login = () =>{
 
             // 유저 토큰 세팅
             localStorage.setItem('TOKEN',result.token)
-
+            localStorage.setItem('userInfo', JSON.stringify(result));
             // 유저 Context 세팅
-            setIsAdmin(result.user==='admin')
+            setIsAdmin(result.role==='admin')
             setIsLogin(true)
             setUser({...result,token:''})
         } catch (error) {
             console.log(error)
+            await Swal.fire({
+            title :'로그인에 실패했습니다',
+            icon:'error',
+            })
+            return
         }     
-
         await Swal.fire({
             title :'로그인에 성공했습니다!',
             icon:'success',
@@ -65,11 +69,11 @@ export const Login = () =>{
 
                 <div className='Linputbox'>
                     <div className='Lone'>
-                        <span style={{alignSelf:'flex-start',fontSize:'12px'}}>이메일</span>
+                        <span style={{alignSelf:'flex-start',fontSize:'12px'}}>아이디</span>
                         <TextField className='Linput' 
-                            value={formData.userEmail} 
-                            onChange={(e)=>setFormData(prev=>({...prev,userEmail:e.target.value}))} 
-                            placeholder='이메일을 입력해주세요'
+                            value={formData.userId} 
+                            onChange={(e)=>setFormData(prev=>({...prev,userId:e.target.value}))} 
+                            placeholder='아이디를 입력해주세요'
                             />
                     </div>
                     <div className='Lone'>
@@ -85,11 +89,42 @@ export const Login = () =>{
                 <Button fullWidth variant='contained' className='Lbutton'
                     onClick={handleLogin}
                 >로그인</Button>
-                <div>
-                    <span style={{fontSize:'12px', marginRight:'5px'}}>계정이 없으신가요?</span>
-                    <span style={{fontSize:'14px',color:'blue',cursor:'pointer'}}
-                        onClick={()=>window.location.href='/register'}
-                    >회원가입</span>
+                
+                {/* 하단 네비게이션 블럭 */}
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '15px',
+                    fontSize: '13px',
+                    backgroundColor: '#f9f9f9',
+                    padding : '10px 0',
+                    borderRadius: '10px',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+                }}>
+                    <span
+                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                        onClick={() => navigate('/login')}
+                    >
+                        로그인
+                    </span>
+                    <span
+                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                        onClick={() => navigate('/register')}
+                    >
+                        회원가입
+                    </span>
+                    <span
+                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                        onClick={() => navigate('/finduserid')}
+                    >
+                        아이디 찾기
+                    </span>
+                    <span
+                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                        onClick={() => navigate('/findpassword')}
+                    >
+                        비밀번호 찾기
+                    </span>
                 </div>
             </div>
             

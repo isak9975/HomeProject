@@ -16,11 +16,11 @@ export const Register = () => {
     const [passwordConfirm,setPasswordConfirm] = useState("");
     // 사용자 입력 에러
     const [error,setError] = useState({
-        message:' ', password:false, email:false, nickname:false
+        message:' ', password:false, email:false, nickname:false, id:false
     });
     // 가입자 데이터
     const [formData,setFormData] = useState({
-        userNickname:'', userEmail:'',userImg:'',userPassword:''
+        userNickname:'', userEmail:'',userImg:'',userPassword:'',userId:''
     })
 
 
@@ -28,6 +28,9 @@ export const Register = () => {
 
         if(formData.userEmail===""){
             setError(prev=>({...prev,message:"이메일은 필수 입니다"}))
+            return
+        }else if(formData.userId===""){
+            setError(prev=>({...prev,message:"아이디는 필수 입니다"}))
             return
         }else if(formData.userNickname===""){
             setError(prev=>({...prev,message:"닉네임은 필수 입니다"}))
@@ -47,7 +50,7 @@ export const Register = () => {
 
         formData.userPassword !== passwordConfirm?setError(prev=>({...prev,message:'비밀번호가 일치 하지 않습니다'})):setError(prev=>({...prev,message:''}))
 
-    },[formData.userPassword,formData.userEmail,formData.userNickname,passwordConfirm])
+    },[formData.userId,formData.userPassword,formData.userEmail,formData.userNickname,passwordConfirm])
 
 
     const handleDragOver = (e) => {
@@ -165,7 +168,7 @@ export const Register = () => {
         } catch (error) {
             console.log(error)
         } finally{
-            const result = await Swal.fire({
+            await Swal.fire({
             title :'회원가입이 완료되었습니다',
             icon:'success',
             })
@@ -244,6 +247,20 @@ export const Register = () => {
                     </div>
 
                     <div className='Rone'>
+                        <span style={{alignSelf:'flex-start',fontSize:'12px'}}>아이디</span>
+                        <TextField className='Rinput' 
+                            value={formData.userId} 
+                            onChange={(e)=>{
+                                if(e.target.value.length <=20){
+                                    setFormData(prev=>({...prev,userId:e.target.value}))
+                                }
+                            }}
+                            error={error.id}
+                            placeholder='아이디를 입력해주세요'
+                        />
+                    </div>
+
+                    <div className='Rone'>
                         <span style={{alignSelf:'flex-start',fontSize:'12px'}}>닉네임</span>
                         <TextField className='Rinput' 
                             value={formData.userNickname} 
@@ -301,11 +318,42 @@ export const Register = () => {
                     onClick={handleRegister}
                     disabled={(error.message)}
                 >회원가입</Button>
-                <div>
-                    <span style={{fontSize:'12px', marginRight:'5px'}}>계정이 있으신가요?</span>
-                    <span style={{fontSize:'14px',color:'blue',cursor:'pointer'}}
-                        onClick={()=>window.location.href='/login'}
-                    >로그인</span>
+                {/* 하단 네비게이션 블럭 */}
+                <div style={{
+                    marginTop:'20px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '15px',
+                    fontSize: '13px',
+                    backgroundColor: '#f9f9f9',
+                    padding : '10px 0',
+                    borderRadius: '10px',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+                }}>
+                    <span
+                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                        onClick={() => navigate('/login')}
+                    >
+                        로그인
+                    </span>
+                    <span
+                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                        onClick={() => navigate('/register')}
+                    >
+                        회원가입
+                    </span>
+                    <span
+                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                        onClick={() => navigate('/finduserid')}
+                    >
+                        아이디 찾기
+                    </span>
+                    <span
+                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                        onClick={() => navigate('/findpassword')}
+                    >
+                        비밀번호 찾기
+                    </span>
                 </div>
             </div>
             

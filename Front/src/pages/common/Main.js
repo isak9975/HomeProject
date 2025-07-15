@@ -5,46 +5,12 @@ import './Main.css'
 export const Main = () => {
     const [visible,setVisible] = useState(true);
 
-    // useEffect(()=>{
-    //     // 페이지 스르륵
-    //     const scrolly = window.scrollY;
-
-    //     if(scrolly>0){
-    //          window.scrollTo({
-    //             top:900,
-    //             behavior:'smooth',
-    //     });
-    //     }
-
-    //     const timer = setTimeout(() => {
-    //         setVisible(false)
-    //     }, 4000); //3초 후에 사라짐
-
-    //     return () => clearTimeout(timer);
-    // },[])
     useEffect(() => {
-  const handleScroll = () => {
-    const scrolly = window.scrollY;
-    if (scrolly > 0) {
-      window.scrollTo({
-        top: 900,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  window.addEventListener('scroll', handleScroll);
-
-  // 4초 후에 사라지게 하는 타이머
-  const timer = setTimeout(() => {
-    setVisible(false);
-  }, 4000);
-
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-    clearTimeout(timer);
-  };
-}, []);
+      // 4초 후에 사라지게 하는 타이머
+      setTimeout(() => {
+        setVisible(false);
+      }, 4000);
+    }, []);
 
     return(
         <div className='Mcontainer'>

@@ -40,6 +40,7 @@ public class SecurityConfig {
 							"/signup/**",
 							"/login",
 							"/s3/**",
+							"/mail/send",
 							"/auth/**",
 							"/swagger-ui/**",
 							"/swagger-ui.html",

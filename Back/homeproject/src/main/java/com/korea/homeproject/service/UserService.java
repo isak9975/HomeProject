@@ -21,9 +21,9 @@ public class UserService {
 	
 	//로그인
 	public UserDTO login(UserDTO dto){
-		//작성한 이메일이 회원가입된 이메일인지 확인.
-		UserEntity userEntity = userRepository.findByUserEmail(dto.getUserEmail())
-				.orElseThrow(()->new RuntimeException("가입되지 않은 이메일입니다."));
+		//작성한 아이디가 회원가입된 이메일인지 확인.
+		UserEntity userEntity = userRepository.findByUserId(dto.getUserId())
+				.orElseThrow(()->new RuntimeException("가입되지 않은 아이디입니다."));
 		
 		// 비밀번호 비교
 		if (!passwordEncoder.matches(dto.getUserPassword(), userEntity.getUserPassword())) {
@@ -31,7 +31,7 @@ public class UserService {
 		}
 		
 		//토큰 발급
-		String token = tokenProvider.createToken(userEntity.getUserEmail());
+		String token = tokenProvider.createToken(userEntity.getUserId());
 		
 		//반환 DTO
 		UserDTO resultDTO = userEntity.toDTO();
@@ -43,7 +43,7 @@ public class UserService {
 	
 	//로그아웃
 	public void logout(){
-		
+		//기능없어도 될듯?
 
 	}
 	
@@ -67,7 +67,35 @@ public class UserService {
 		userRepository.save(userEntity);
 		
 		//회원가입한 내용으로 회원 반환하기.
-		return userRepository.findByUserEmail(dto.getUserEmail()).get().toDTO();
+		return userRepository.findByUserId(dto.getUserId()).get().toDTO();
+	}
+	
+	//아이디 찾기
+	public String findByEmail(String email) {
+		
+		String result="";
+		//있을경우
+		if(userRepository.findByUserEmail(email).isPresent()) {
+			result = userRepository.findByUserEmail(email).get().getUserId();			
+		}else {
+			throw new RuntimeException("가입되지 않은 이메일입니다");
+		}
+		return result;
+	}
+	
+	//비밀번호 업데이트
+	public UserDTO updatePassword(UserDTO dto) {
+		//id, email, password
+		
+		//비밀번호 암호화
+		String newEncodedPassword = passwordEncoder.encode(dto.getUserPassword());
+		
+		userRepository.findByUserId(dto.getUserId()).ifPresent(t ->{
+			t.setUserPassword(newEncodedPassword);
+			userRepository.save(t);
+		});
+		
+		return userRepository.findByUserId(dto.getUserId()).get().toDTO();
 	}
 	
 }

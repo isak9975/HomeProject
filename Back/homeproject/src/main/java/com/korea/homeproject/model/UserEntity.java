@@ -34,6 +34,8 @@ public class UserEntity {
 	@Column(unique = true,name = "userNickname")
 	private String userNickname;
 	
+	@Column(name = "userId")
+	private String userId;
 	
 	@Column(unique = true, name = "userEmail")
 	private String userEmail;
@@ -60,6 +62,7 @@ public class UserEntity {
 		return UserDTO
 				.builder()
 					.userNo(userNo)
+					.userId(userId)
 					.userEmail(userEmail)
 					.userNickname(userNickname)
 					.userPassword(userPassword)

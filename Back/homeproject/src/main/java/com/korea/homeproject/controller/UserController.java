@@ -1,11 +1,15 @@
 package com.korea.homeproject.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.korea.homeproject.dto.UserDTO;
@@ -50,6 +54,7 @@ public class UserController {
 		return ResponseEntity.ok().body(null);
 	}
 	
+	
 	//회원가입
 	@PostMapping("/signup")
 	@Operation(summary = "유저 회원가입", description = "유저 회원가입")
@@ -69,5 +74,24 @@ public class UserController {
 		UserDTO result = userservice.signup(dto);
 		return ResponseEntity.ok().body(result);
 	}
+	
+	
+	//이메일 작성하면 아이디 반환하기
+	@GetMapping("/find")
+	public ResponseEntity<?> findByEmail(@RequestParam(name = "email") String email){
+		String result = userservice.findByEmail(email);
+		return ResponseEntity.ok().body(Map.of("userId",result));
+	}
+	
+	
+	//비밀번호 업데이트
+	@PutMapping("/update")
+	public ResponseEntity<?> updatePassword(@RequestBody UserDTO dto){
+		UserDTO result = userservice.updatePassword(dto);
+		return ResponseEntity.ok().body(result);
+	}
+	
+	
+
 
 }

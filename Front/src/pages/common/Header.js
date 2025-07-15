@@ -58,7 +58,7 @@ export const Header = () => {
                 
                 {!isLogin&&<Link className='Hloginbutton' to={'/login'}>로그인</Link>}
                 {!isLogin&&<Link className='Hregisterbutton' to={'/register'}>회원가입</Link>}
-                {isLogin&&<div style={{color:'white',cursor:'pointer'}} onClick={handlelogout}>로그아웃</div>}
+                {isLogin&&<div style={{color:'white',cursor:'pointer',marginRight:'20px'}} onClick={handlelogout}>로그아웃</div>}
                 {isAdmin&&<div style={{color:'red'}} onClick={()=>{
                     Swal.fire({
                         title:'기능 준비중입니다',
