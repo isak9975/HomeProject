@@ -1,0 +1,100 @@
+.Btop {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+   justify-content: flex-end;
+  margin: 1rem 0;
+}
+    .Btop h2 {
+        text-align: center;
+        font-size: 2rem;        
+        font-weight: 700;       
+        color: #333333;        
+        margin: 0;             
+        padding: 0.5rem 0 1rem; 
+        border-bottom: 2px solid #cccccc; 
+        border-top: 2px solid #cccccc; 
+    }
+    .Bwritebutton {
+        padding: 1rem 5rem;
+        margin-left: auto;
+        transition: all 0.2s ease-in-out;
+    }
+
+
+.Blist {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem 5rem;
+}
+
+.Bcard {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+    .Bcard:hover{
+        background-color: #f8f9fa; 
+        transform: translateY(-4px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease-in-out;
+    }
+
+.Bheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+    /* 카테고리별 색 차별화 */
+    .Bcategory-infomation {
+    color: #4dabf7; 
+    }
+
+    .Bcategory-lounge {
+    color: #82c91e; 
+    }
+
+    .Bcategory-review {
+    color: #f59f00; 
+    }
+
+    .Bcategory-error {
+    color: #e03131; 
+    }
+
+.Btitle {
+  color: #212529;
+}
+
+.Binfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #868e96;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.Bcontent {
+  font-size: 1rem;
+  color: #343a40;
+  margin-bottom: 1rem;
+}
+
+.Bfooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: #495057;
+}

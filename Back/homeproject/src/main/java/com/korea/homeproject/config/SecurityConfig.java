@@ -39,6 +39,8 @@ public class SecurityConfig {
 							"/signup",
 							"/signup/**",
 							"/login",
+							"/board",
+							"/board/**",
 							"/s3/**",
 							"/mail/send",
 							"/auth/**",

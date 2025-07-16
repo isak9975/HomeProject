@@ -1,0 +1,103 @@
+.BDcontainer {
+  max-width: 800px;
+  min-height:600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+  overflow: auto;
+}
+
+.BDheader {
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.BDtitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 0.5rem;
+}
+
+.BDinfo {
+  font-size: 0.9rem;
+  color: #868e96;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.BDcontent {
+  font-size: 1rem;
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+
+  max-width: 100%;
+  overflow-wrap: break-word; 
+  word-break: break-word;    
+  overflow-x: auto;          
+}
+
+.BDimage {
+  max-width: 100%;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+.BDfooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.BDlike-btn,
+.BDdislike-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+.BDlike-btn:hover {
+    background-color: #ffe3e3;
+}
+
+.BDdislike-btn:hover {
+    background-color: #e0e0ff;
+}
+
+
+.BD-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #7bb4b0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+.BDfooterer {
+  max-width: 800px;
+  margin: 2rem auto;
+  
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  font-size: 0.9rem;
+  padding : 20px;
+  border-radius: 10px;
+  background-color: lightgray;
+  color: white;
+  margin-bottom: 20px;
+}

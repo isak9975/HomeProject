@@ -37,6 +37,7 @@ public class BoardEntity {
 	private long boardNo;
 	private String boardCategory;
 	private String boardTitle;
+	@Column(columnDefinition = "LONGTEXT")
 	private String boardContent;
 	private String boardImg;
 	

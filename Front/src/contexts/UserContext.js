@@ -12,8 +12,8 @@ export const UserProvider = ({children}) => {
 
     // 앱 시작시 localStorage에서 토큰과 유저 정보를 확인해서 상태 세팅
     useEffect(()=>{
-        const token = localStorage.getItem('token');
-        const userInfo = localStorage.getItem('userInfo'); //JSON.stringify된 사용자 정보
+        const token = sessionStorage.getItem('TOKEN');
+        const userInfo = sessionStorage.getItem('userInfo'); //JSON.stringify된 사용자 정보
         if(token && userInfo){
             setIsLogin(true);
             setUser(JSON.parse(userInfo));

@@ -1,0 +1,162 @@
+/* 메인 영역 */
+.nmain {
+  transition: margin-left 0.3s ease;
+}
+.nmainwithsidebar {
+  margin-left: 220px;
+}
+
+/* 사이드바 */
+.nasidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px; /* 약간 넓게 */
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding: 1.5rem 1rem;
+  /* text-align: center;  ← 제거 */
+  border: 1px solid #dee2e6;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* 텍스트 */
+.nmaintext {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #495057;
+}
+.nmaintextside {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin: 0.25rem 0 0;
+  margin-bottom: 2rem;
+}
+
+.nsidebarstart{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+/* 프로필 영역  */
+.nprofile {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.nprofileimage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #6c757d;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* 메뉴 리스트 */
+.nsidebarcenter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.nsidebarcenter > li {
+  width: 100%;
+  position: relative;
+}
+
+.nsidebarcenter li a {
+  display: block;
+  font-size: 1rem;
+  color: #343a40;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: left; 
+  font-weight: 500;
+  position: relative;
+}
+
+.nsidebarcenter li a::before {
+  color: #6c757d;
+  margin-right: 8px;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.nsidebarcenter li a:hover {
+  background-color: #ced4da;
+  color: #212529;
+  font-weight: 600;
+}
+
+.nblogsubmenu {
+  padding-left: 1.5rem;
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.nblogsubmenu li a {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #495057;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+/* 서브 메뉴 아이콘 (작은 점) */
+.nblogsubmenu li a::before {
+  content: '–';
+  color: #adb5bd;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* 서브 메뉴 호버 효과 */
+.nblogsubmenu li a:hover {
+  color: #212529;
+  font-weight: 600;
+}
+
+/* 상태 영역 */
+.nstate {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid #dee2e6;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+.nstateitem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}

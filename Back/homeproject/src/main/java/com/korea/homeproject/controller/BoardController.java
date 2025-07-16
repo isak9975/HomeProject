@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Tag(name = "board", description = "보드 API - 게시판 작성 CRUD")
@@ -35,6 +37,7 @@ public class BoardController {
 	
 	//C
 	@PostMapping
+	@Transactional
 	@Operation(summary = "게시글 작성", description = "게시글 작성")
 	@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "성공"),
@@ -53,6 +56,7 @@ public class BoardController {
 	
 	//R
 	@GetMapping
+	@Transactional
 	@Operation(summary = "게시글 찾기", description = "모든 게시글 반환")
 	@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "성공"),
@@ -75,6 +79,22 @@ public class BoardController {
 		List<BoardDTO> result = boardService.findByCategory(category);
 		return ResponseEntity.ok().body(result);
 	}
+	
+	
+	//R-boardNo별로
+	@GetMapping("/detail/{boardNo}")
+	@Transactional
+	@Operation(summary = "게시판 번호 별로 찾기", description = "게시글 번호 별로 반환")
+	@ApiResponses({
+		@ApiResponse(responseCode = "200", description = "성공"),
+		@ApiResponse(responseCode = "4xx", description = "실패")
+	})
+	@Parameter(name = "boardNo",description = "게시판 번호")
+	public ResponseEntity<?> findByBoardNo(@PathVariable(name = "boardNo") Long boardNo){
+		List<BoardDTO> result = boardService.findByBoardNo(boardNo);
+		return ResponseEntity.ok().body(result);
+	}
+	
 	
 	//U
 	@PutMapping
@@ -112,14 +132,14 @@ public class BoardController {
 	}
 	
 	//D
-	@DeleteMapping
+	@DeleteMapping("/{boardNo}")
 	@Operation(summary = "게시글 삭제", description = "게시글 번호로 게시글 삭제")
 	@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "성공"),
 		@ApiResponse(responseCode = "4xx", description = "실패")
 	})
 	@Parameter(name = "boardNo",description = "게시글 번호")
-	public ResponseEntity<?> delete(@RequestParam Long boardNo){
+	public ResponseEntity<?> delete(@PathVariable(name = "boardNo") Long boardNo){
 		boolean result = boardService.delete(boardNo);
 		return ResponseEntity.ok().body(result);
 	}

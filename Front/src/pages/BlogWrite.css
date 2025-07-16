@@ -1,0 +1,62 @@
+.BWcontainer {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-height: 550px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.BWwritecontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.BWwritecontainer h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0;
+    padding: 1rem 0;
+    border-bottom: 2px solid #dcdcdc;
+    border-top: 2px solid #dcdcdc;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.BWquill {
+    padding: 30px 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    height: 550px;
+}
+
+
+.BWbutton {
+    gap:10px;
+    margin-top: 20px;
+    align-self: flex-end;
+    padding: 0 50px;
+}
+
+.BWbutton button {
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #1976d2;
+    color: white;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.BWbutton button:hover {
+    background-color: #155fa0;
+}

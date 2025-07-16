@@ -4,7 +4,7 @@ import { FcSms } from "react-icons/fc";
 import { FcDatabase } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
 import { FcCollaboration } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export const BlogNavigation = () => {
 
@@ -41,6 +41,7 @@ export const BlogNavigation = () => {
                     value="review" 
                     icon={<FcSms fontSize={40} />} />
             </BottomNavigation>
+            <Outlet/>
         </>
     )
 }

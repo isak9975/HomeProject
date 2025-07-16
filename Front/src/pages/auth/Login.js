@@ -34,8 +34,8 @@ export const Login = () =>{
             const result = await response.json();
 
             // 유저 토큰 세팅
-            localStorage.setItem('TOKEN',result.token)
-            localStorage.setItem('userInfo', JSON.stringify(result));
+            sessionStorage.setItem('TOKEN',result.token)
+            sessionStorage.setItem('userInfo', JSON.stringify(result));
             // 유저 Context 세팅
             setIsAdmin(result.role==='admin')
             setIsLogin(true)

@@ -44,21 +44,28 @@ export const Header = () => {
         <div className='Hcontainer'>
             <div className='Hcontainer_left'>
                 <div className='Hlogoicon'>
-                    <Link to={'/'} className='Hlogotext'>M</Link>
+                    <Link to={'/'} onClick={()=>{window.scroll(0,0)}} className='Hlogotext'>M</Link>
                 </div>
                 <span className='Hlogotextto'>MyBlog</span>
             </div>
 
             <div className='Hcontainer_center'>
-                <div className='Hblogbutton' onClick={()=>handleGo('/blog')}>Community</div>
-                <div className='Hblogbutton' onClick={()=>handleGo('/contact')}>ContactMe</div>
+                <div className='Hblogbutton' onClick={()=>{handleGo('/blog/total')
+                    window.scroll(0,0)
+                }}>Community</div>
+                <div className='Hblogbutton' onClick={()=>{handleGo('/contact')
+                    window.scroll(0,0)
+                }}>ContactMe</div>
             </div>
 
             <div className='Hcontainer_right'>
                 
                 {!isLogin&&<Link className='Hloginbutton' to={'/login'}>로그인</Link>}
                 {!isLogin&&<Link className='Hregisterbutton' to={'/register'}>회원가입</Link>}
-                {isLogin&&<div style={{color:'white',cursor:'pointer',marginRight:'20px'}} onClick={handlelogout}>로그아웃</div>}
+                {isLogin&&<div style={{color:'white',cursor:'pointer',marginRight:'20px'}} onClick={
+                    ()=>{handlelogout()
+                    window.scroll(0,0)
+                }}>로그아웃</div>}
                 {isAdmin&&<div style={{color:'red'}} onClick={()=>{
                     Swal.fire({
                         title:'기능 준비중입니다',

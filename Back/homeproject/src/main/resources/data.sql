@@ -1,5 +1,5 @@
 -- dummy SQL to avoid empty script error
-SELECT 1;
+ SELECT 1;
 
 --set Foreign_key_checks = 0;
 --
@@ -11,99 +11,86 @@ SELECT 1;
 --
 ----email 1111@1111.com 비번 1111111
 --INSERT INTO usertable (
---    user_email,
---    user_password,
---    user_nickname,
---    user_img,
---    user_id,
---    user_role,
---    user_create_at,
---    user_update_at
---    ) VALUES (
---    '1111@1111.com',
---    '$2a$10$hC3rU3P2UrXSZtHgLDkvI.a1YaHs0T5YgQ22SS1c2wq.QSSxK9wbS',
---    '관리자1',
---    'https://home-project-file.s3.ap-northeast-2.amazonaws.com/userImg/defaultimg.png',
---    '1111',
---    'admin',
---    now(),
---    now()
+--   user_email,
+--   user_password,
+--   user_nickname,
+--   user_img,
+--   user_id,
+--   user_role,
+--   user_create_at,
+--   user_update_at
+--   ) VALUES (
+--   '1111@1111.com',
+--   '$2a$10$hC3rU3P2UrXSZtHgLDkvI.a1YaHs0T5YgQ22SS1c2wq.QSSxK9wbS',
+--   '관리자1',
+--   'https://home-project-file.s3.ap-northeast-2.amazonaws.com/userImg/defaultimg.png',
+--   '1111',
+--   'admin',
+--   now(),
+--   now()
 --);
 --
 ---- 정보 카테고리
 --INSERT INTO boardtable (board_category, board_title, board_content, board_img, board_create_at, board_update_at, user_no) VALUES
---('정보', '정보 1번 글', '정보 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('정보', '정보 2번 글', '정보 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('정보', '정보 3번 글', '정보 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('정보', '정보 4번 글', '정보 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('정보', '정보 5번 글', '정보 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('정보', '정보 6번 글', '정보 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('정보', '정보 7번 글', '정보 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('정보', '정보 8번 글', '정보 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('정보', '정보 9번 글', '정보 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('정보', '정보 10번 글', '정보 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
+--('infomation', '정보 1번 글', '정보 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('infomation', '정보 2번 글', '정보 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('infomation', '정보 3번 글', '정보 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('infomation', '정보 4번 글', '정보 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('infomation', '정보 5번 글', '정보 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('infomation', '정보 6번 글', '정보 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('infomation', '정보 7번 글', '정보 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('infomation', '정보 8번 글', '정보 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('infomation', '정보 9번 글', '정보 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('infomation', '정보 10번 글', '정보 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
 --
 ---- 에러 카테고리
 --INSERT INTO boardtable (board_category, board_title, board_content, board_img, board_create_at, board_update_at, user_no) VALUES
---('에러', '에러 1번 글', '에러 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('에러', '에러 2번 글', '에러 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('에러', '에러 3번 글', '에러 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('에러', '에러 4번 글', '에러 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('에러', '에러 5번 글', '에러 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('에러', '에러 6번 글', '에러 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('에러', '에러 7번 글', '에러 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('에러', '에러 8번 글', '에러 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('에러', '에러 9번 글', '에러 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('에러', '에러 10번 글', '에러 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
+--('error', '에러 1번 글', '에러 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('error', '에러 2번 글', '에러 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('error', '에러 3번 글', '에러 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('error', '에러 4번 글', '에러 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('error', '에러 5번 글', '에러 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('error', '에러 6번 글', '에러 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('error', '에러 7번 글', '에러 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('error', '에러 8번 글', '에러 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('error', '에러 9번 글', '에러 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('error', '에러 10번 글', '에러 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
 --
 ---- 자유 카테고리
 --INSERT INTO boardtable (board_category, board_title, board_content, board_img, board_create_at, board_update_at, user_no) VALUES
---('자유', '자유 1번 글', '자유 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('자유', '자유 2번 글', '자유 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('자유', '자유 3번 글', '자유 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('자유', '자유 4번 글', '자유 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('자유', '자유 5번 글', '자유 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('자유', '자유 6번 글', '자유 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('자유', '자유 7번 글', '자유 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('자유', '자유 8번 글', '자유 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('자유', '자유 9번 글', '자유 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('자유', '자유 10번 글', '자유 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
---
----- 질문 카테고리
---INSERT INTO boardtable (board_category, board_title, board_content, board_img, board_create_at, board_update_at, user_no) VALUES
---('질문', '질문 1번 글', '질문 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('질문', '질문 2번 글', '질문 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('질문', '질문 3번 글', '질문 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('질문', '질문 4번 글', '질문 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('질문', '질문 5번 글', '질문 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('질문', '질문 6번 글', '질문 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('질문', '질문 7번 글', '질문 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('질문', '질문 8번 글', '질문 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('질문', '질문 9번 글', '질문 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('질문', '질문 10번 글', '질문 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
+--('lounge', '자유 1번 글', '자유 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('lounge', '자유 2번 글', '자유 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('lounge', '자유 3번 글', '자유 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('lounge', '자유 4번 글', '자유 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('lounge', '자유 5번 글', '자유 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('lounge', '자유 6번 글', '자유 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('lounge', '자유 7번 글', '자유 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('lounge', '자유 8번 글', '자유 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('lounge', '자유 9번 글', '자유 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('lounge', '자유 10번 글', '자유 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
 --
 ---- 후기 카테고리
 --INSERT INTO boardtable (board_category, board_title, board_content, board_img, board_create_at, board_update_at, user_no) VALUES
---('후기', '후기 1번 글', '후기 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('후기', '후기 2번 글', '후기 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('후기', '후기 3번 글', '후기 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('후기', '후기 4번 글', '후기 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('후기', '후기 5번 글', '후기 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('후기', '후기 6번 글', '후기 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('후기', '후기 7번 글', '후기 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('후기', '후기 8번 글', '후기 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
---('후기', '후기 9번 글', '후기 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
---('후기', '후기 10번 글', '후기 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
+--('review', '후기 1번 글', '후기 카테고리의 1번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('review', '후기 2번 글', '후기 카테고리의 2번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('review', '후기 3번 글', '후기 카테고리의 3번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('review', '후기 4번 글', '후기 카테고리의 4번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('review', '후기 5번 글', '후기 카테고리의 5번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('review', '후기 6번 글', '후기 카테고리의 6번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('review', '후기 7번 글', '후기 카테고리의 7번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('review', '후기 8번 글', '후기 카테고리의 8번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1),
+--('review', '후기 9번 글', '후기 카테고리의 9번째 게시글입니다.', 'default.jpg', NOW(), NOW(), 1),
+--('review', '후기 10번 글', '후기 카테고리의 10번째 게시글입니다.', 'default.jpg', DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 1);
 --
 --
 --
 --
 --INSERT INTO replytable (
---    reply_content,
---    reply_create_at,
---    reply_update_at,
---    board_no,
---    user_no
+--   reply_content,
+--   reply_create_at,
+--   reply_update_at,
+--   board_no,
+--   user_no
 --) VALUES
 ---- 정보 (board_no 1~10)
 --('정보 게시글에 관한 내용입니다. 예시로 작성된 댓글입니다.', NOW(), NOW(), 1, 1),

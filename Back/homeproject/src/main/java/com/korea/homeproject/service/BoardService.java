@@ -53,6 +53,16 @@ public class BoardService {
 	}
 	
 	
+	//r-boardNo
+	public List<BoardDTO> findByBoardNo(Long boardNo){
+		
+		List<BoardDTO> result = boardRepository.findById(boardNo).stream().map(t->t.toDTO()).collect(Collectors.toList());
+		  
+		return result; 
+	}
+	
+	
+	
 	//u
 	public List<BoardDTO> update(BoardDTO dto){
 		
