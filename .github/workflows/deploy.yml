@@ -22,7 +22,9 @@ jobs:
     run: chmod +x ./Back/homeproject/gradlew
 
   - name: Build springboot app
-    run: ./Back/homeproject/gradlew clean build
+    run: |
+     cd Back/homeproject
+     ./gradlew clean build
 
   - name: Copy JAR file to EC2
     uses: appleboy/scp-action@v0.1.7
