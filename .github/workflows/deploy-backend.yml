@@ -26,6 +26,9 @@ jobs:
      cd Back/homeproject
      ./gradlew clean build -x test
 
+  - name: Check build output files
+    run: ls -l ./Back/homeproject/build/libs/
+
   - name: Copy JAR file to EC2
     uses: appleboy/scp-action@v0.1.7
     with:
