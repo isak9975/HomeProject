@@ -18,10 +18,11 @@ jobs:
       node-version: 18
 
   - name: Install dependencies
-    working-diretory: Front
+    working-directory: Front
     run: npm install
 
   - name: build react app
+    working-directory: Front
     run: npm run build
 
   - name: deploy to s3
