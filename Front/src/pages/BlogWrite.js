@@ -36,6 +36,18 @@ export const BlogWrite = () => {
     };
 
     const handleWrite = async () => {
+
+        // 내용없으면 반환
+        if(title?.trim===''||value?.trim===''){
+            await Swal.fire({
+                title :'내용을 입력해주세요.',
+                icon:'error',
+            })
+            return
+        }
+        console.log(title?.trim==='')
+        console.log(value?.trim==='')
+
         const data = {
             boardCategory : category,
             boardTitle:title,
