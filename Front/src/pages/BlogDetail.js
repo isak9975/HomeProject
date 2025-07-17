@@ -58,7 +58,7 @@ export const BlogDetail = () => {
             }));
         });
     
-    }, [board.boardNo,board.boardLike,board.boardUnLike]); // board.boardNo가 바뀔 때만 실행
+    }, [board.boardNo,board.boardLike,board.boardUnLike,board.boardView]); // board.boardNo가 바뀔 때만 실행
 
 
     // 좋아요
