@@ -59,7 +59,7 @@ export const NewPassword = () =>{
         try {
             const response = await fetch(`${API}/auth/update`,option)
              // json 파씽
-            const result = await response.json();
+            await response.json();
 
         } catch (error) {
             console.log(error)

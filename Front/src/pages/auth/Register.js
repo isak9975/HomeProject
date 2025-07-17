@@ -113,7 +113,7 @@ export const Register = () => {
 
         console.log("세팅된 사진 :",formData.userImg)
         //2) 이미지 파일 백엔드에 저장 후 접근 URL받기
-        const imageForm = new FormData;
+        const imageForm = new FormData();
         imageForm.append("file",formData.userImg);
         imageForm.append("userEmail",formData.userEmail);
             // 폴더위치
@@ -204,7 +204,7 @@ export const Register = () => {
                             }}
                         >
                             {/* 프로필 사진 예시*/}
-                            {preView&&<img src={preView} className='Rprofileicon'/>}
+                            {preView&&<img alt='프로필 예시' src={preView} className='Rprofileicon'/>}
 
                             {/* 안내 정보 */}
                             {!preView&&

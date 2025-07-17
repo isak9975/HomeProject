@@ -1,4 +1,4 @@
-import { Navigate, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react";
 import { API } from "./common/API";
 import DOMPurify from 'dompurify';
@@ -58,7 +58,7 @@ export const BlogDetail = () => {
             }));
         });
     
-    }, [board.boardNo]); // board.boardNo가 바뀔 때만 실행
+    }, [board.boardNo,board.boardLike,board.boardUnLike]); // board.boardNo가 바뀔 때만 실행
 
 
     // 좋아요
@@ -147,7 +147,7 @@ export const BlogDetail = () => {
 
             if(!response.isConfirmed)return 
 
-            const content = await fetch(`${API}/board/${boardNo}`, {
+            await fetch(`${API}/board/${boardNo}`, {
                 method: 'DELETE',
             }).then(() => {
                 localStorage.setItem(unlikeKey, 'true');

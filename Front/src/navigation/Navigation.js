@@ -40,7 +40,7 @@ const AppLayout = () => {
                     <span className="nmaintext">{isLogin ? `${user.role} 계정입니다` : '사이드 바입니다'}</span><br />
                     <span className="nmaintextside">{isLogin ? `${user.userNickname}님 안녕하세요` : '안녕하세요 사용자님'}</span>
                     <div className="nprofile">
-                        <img className="nprofileimage" src={isLogin ? `${user.userImg}` : '/media/profile.png'} />
+                        <img className="nprofileimage" alt='프로필 이미지' src={isLogin ? `${user.userImg}` : '/media/profile.png'} />
                     </div>
                 </div>
 

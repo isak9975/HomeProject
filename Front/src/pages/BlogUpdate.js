@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import ReactQuill from 'react-quill-new';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { API } from './common/API';
 import Swal from 'sweetalert2';

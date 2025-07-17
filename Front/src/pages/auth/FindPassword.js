@@ -68,7 +68,7 @@ export const FindPassword = () =>{
     const handleConfirm = () => {
         // console.log(validCode==userValidCode)
         
-        if(validCode==userValidCode){
+        if(validCode===userValidCode){
             Swal.fire({
             title :'인증이 완료 되었습니다.',
             icon:'success',
