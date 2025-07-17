@@ -18,9 +18,8 @@ jobs:
       node-version: 18
 
   - name: Install dependencies
-    run: |
-      cd Front
-      npm install
+    working-diretory: Front
+    run: npm install
 
   - name: build react app
     run: npm run build
