@@ -15,6 +15,15 @@ export const Contact = () => {
     const [email, setEmail] = useState(user?.userEmail || '');
 
     const handleEmail = async () => {
+        if(email===''){
+            Swal.fire({
+                title: '이메일을 입력해주세요.',
+                icon: 'warning'
+            });
+            return
+        }
+
+
         const alreadySent = localStorage.getItem(`emailSent_${email}`);
         if (alreadySent) {
             Swal.fire({
