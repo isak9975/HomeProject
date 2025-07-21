@@ -67,6 +67,7 @@ export const Contact = () => {
                     title: '발송에 실패했습니다.',
                     icon: 'error'
                 });
+                console.log(response.status)
             }
 
         } catch (error) {
@@ -74,6 +75,7 @@ export const Contact = () => {
                 title: '발송에 실패했습니다.',
                 icon: 'error'
             });
+            console.log(error)
         }
     }
 
