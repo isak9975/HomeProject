@@ -57,8 +57,8 @@ export const BlogDetail = () => {
                 boardView: prev.boardView + 1,
             }));
         });
+        // board.boardView 의존성 검사 패스 - 무한 루프 방지
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // board.boardView 의존성 검사 패스 - 무한 루프 방지
     }, [board.boardNo]); // board.boardNo가 바뀔 때만 실행
 
 
