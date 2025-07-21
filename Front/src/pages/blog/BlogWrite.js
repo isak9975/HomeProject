@@ -4,9 +4,9 @@ import './BlogWrite.css'
 import 'react-quill-new/dist/quill.snow.css'; //import2
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
-import { API } from './common/API';
+import { API } from '../common/API';
 import Swal from 'sweetalert2';
-import { UserContext } from '../contexts/UserContext';
+import { UserContext } from '../../contexts/UserContext';
 
 
 export const BlogWrite = () => {

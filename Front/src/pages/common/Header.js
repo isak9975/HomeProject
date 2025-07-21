@@ -21,7 +21,7 @@ export const Header = () => {
         })
 
         if(result.isConfirmed){
-            localStorage.setItem('TOKEN','')
+            sessionStorage.setItem('TOKEN','')
             setIsAdmin(false)
             setIsLogin(false)
         }

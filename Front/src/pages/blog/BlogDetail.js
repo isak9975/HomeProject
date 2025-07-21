@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react";
-import { API } from "./common/API";
+import { API } from "../common/API";
 import DOMPurify from 'dompurify';
 import './BlogDetail.css'
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import Swal from "sweetalert2";
 
 export const BlogDetail = () => {
@@ -36,10 +36,11 @@ export const BlogDetail = () => {
         if (!board.boardNo) return; 
 
         const token = sessionStorage.getItem('TOKEN');
+        const currentView = board.boardView;
 
         const data = {
             boardNo: board.boardNo,
-            boardView: board.boardView + 1,
+            boardView: currentView + 1,
             boardLike: board.boardLike,
             boardUnLike: board.boardUnLike,
         };
@@ -58,7 +59,7 @@ export const BlogDetail = () => {
             }));
         });
     
-    }, [board.boardNo,board.boardLike,board.boardUnLike,board.boardView]); // board.boardNo가 바뀔 때만 실행
+    }, [board.boardNo,board.boardLike,board.boardUnLike]); // board.boardNo가 바뀔 때만 실행
 
 
     // 좋아요

@@ -39,9 +39,9 @@ export const Main = () => {
             </div>
 
             {/* 바디 */}
-            <div className='Mbottom'>
+            {/* <div className='Mbottom'>
                 <h2>메인의 바디입니다.</h2>
-            </div>
+            </div> */}
         </div>
     )
 }

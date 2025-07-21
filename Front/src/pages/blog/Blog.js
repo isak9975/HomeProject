@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import {Button} from '@mui/material'
 import { useEffect, useState } from "react";
 import './Blog.css'
-import { API } from "./common/API";
+import { API } from "../common/API";
 
 export const Blog = () => {
      
