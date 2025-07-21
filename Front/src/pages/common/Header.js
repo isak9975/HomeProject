@@ -9,7 +9,7 @@ export const Header = () => {
 
     const navigate = useNavigate();
 
-    const {isAdmin,isLogin,setIsLogin,setIsAdmin} = useContext(UserContext);
+    const {isAdmin,isLogin,setIsLogin,setIsAdmin,setUser} = useContext(UserContext);
 
     const handlelogout = async() => {
         const result = await Swal.fire({
@@ -24,6 +24,7 @@ export const Header = () => {
             sessionStorage.setItem('TOKEN','')
             setIsAdmin(false)
             setIsLogin(false)
+            setUser('')
         }
     }
 
