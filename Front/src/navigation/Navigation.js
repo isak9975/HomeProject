@@ -5,7 +5,7 @@ import { Register } from '../pages/auth/Register'
 import { Main } from '../pages/common/Main'
 import { Header } from '../pages/common/Header'
 import { Footer } from '../pages/common/Footer'
-import { Contact } from '../pages/Contact';
+import { Contact } from '../pages/contact/Contact';
 import { UserContext } from '../contexts/UserContext';
 import { FindPassword } from '../pages/auth/FindPassword';
 import { FindUserId } from '../pages/auth/FindUserId';
