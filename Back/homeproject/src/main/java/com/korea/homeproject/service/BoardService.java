@@ -61,7 +61,7 @@ public class BoardService {
 	@Transactional
 	public List<BoardDTO> findByBoardNo(Long boardNo){
 		
-		List<BoardDTO> result = boardRepository.findById(boardNo).stream().map(t->t.toDTO()).collect(Collectors.toList());
+		List<BoardDTO> result = boardRepository.findByIdWithReplies(boardNo).stream().map(t->t.toDTO()).collect(Collectors.toList());
 		  
 		return result; 
 	}
