@@ -67,6 +67,7 @@ export const BlogUpdate = () => {
         if(!response.isConfirmed)return
 
         const data = {
+            boardNo:board.boardNo,
             boardCategory : board.boardCategory,
             boardTitle:title,
             boardContent : value,
