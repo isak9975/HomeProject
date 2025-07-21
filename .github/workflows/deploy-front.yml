@@ -21,6 +21,11 @@ jobs:
     working-directory: Front
     run: npm install
 
+  - name : Create .env file
+    working-directory: Front
+    run: |
+     echo "REACT_APP_EMAIL_PUBLIC_KEY=${{ secrets.REACT_APP_EMAIL_PUBLIC_KEY }}" >> .env
+
   - name: build react app
     working-directory: Front
     run: npm run build

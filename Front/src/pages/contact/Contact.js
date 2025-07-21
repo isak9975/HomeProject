@@ -14,6 +14,7 @@ export const Contact = () => {
     const [email, setEmail] = useState('');
 
     console.log("publicKey:", process.env.REACT_APP_EMAIL_PUBLIC_KEY);
+    console.log("publicKey:", process.env.REACT_APP_EMAIL_PUBLIC_KEY);
 
     const handleEmail = async () => {
         if(email===''){
