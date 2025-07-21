@@ -51,9 +51,7 @@ export const Contact = () => {
                     message: resumeUrl,
                     email: email,
                 },
-                {
-                    publicKey: process.env.REACT_APP_EMAIL_PUBLIC_KEY
-                }
+                process.env.REACT_APP_EMAIL_PUBLIC_KEY
             );
 
             if (response.status === 200) {
