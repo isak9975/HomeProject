@@ -25,6 +25,7 @@ jobs:
     working-directory: Front
     run: |
      echo "REACT_APP_EMAIL_PUBLIC_KEY=${{ secrets.REACT_APP_EMAIL_PUBLIC_KEY }}" >> .env
+     echo "REACT_APP_SERVICE_ID=${{ secrets.REACT_APP_SERVICE_ID }}" >> .env
 
   - name: build react app
     working-directory: Front
