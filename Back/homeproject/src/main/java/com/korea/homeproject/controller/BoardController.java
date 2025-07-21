@@ -98,7 +98,7 @@ public class BoardController {
 	
 	//U
 	@PutMapping
-	@Transactional
+//	@Transactional
 	@Operation(summary = "게시글 수정", description = "게시글 수정")
 	@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "성공"),
