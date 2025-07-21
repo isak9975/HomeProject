@@ -14,7 +14,7 @@ export const BlogDetail = () => {
 
     const navigate = useNavigate();
 
-    const {user} = useContext(UserContext);
+    const {user,isAdmin} = useContext(UserContext);
 
     const token = sessionStorage.getItem('TOKEN');
     const likeKey = `liked_${board.boardNo}_${token}`;
@@ -92,7 +92,6 @@ export const BlogDetail = () => {
                 title :'좋아요!',
                 icon:'success',
             })
-            window.location.reload()
         });
         };
 
@@ -126,17 +125,35 @@ export const BlogDetail = () => {
                     title :'싫어요!!',
                     icon:'error',
                 })
-                window.location.reload()
             });
         };
 
         // 수정하기 버튼 누를시 수정하기 페이지로
         const handleUpdate = () => {   
+
+            if (user.userNo !== board.userNo&&!isAdmin) {
+                Swal.fire({
+                    title: '작성자만 수정 할 수 있습니다',
+                    icon: 'warning',
+                    confirmButtonText: '확인',
+                });
+            return;
+            }
+
             navigate(`/blog/update/${board.boardNo}`,{state:board})
         }
 
         //삭제하기 버튼 누를시
         const handleDelete = async () => {
+
+            if (user.userNo !== board.userNo&&isAdmin) {
+                Swal.fire({
+                    title: '작성자만 삭제 할 수 있습니다.',
+                    icon: 'warning',
+                    confirmButtonText: '확인',
+                });
+            return;
+            }
 
             const response = await Swal.fire({
                 title :'정말 삭제 하시겠습니까?',
@@ -185,10 +202,10 @@ export const BlogDetail = () => {
  
                 
             </div>
-            {user.userNo===board.userNo&&<div className="BDfooterer">
+            <div className="BDfooterer">
                 <span className="BD-btn" onClick={()=>handleUpdate()} >수정하기</span>
                 <span className="BD-btn" onClick={()=>handleDelete()}>삭제하기</span>
-            </div>}
+            </div>
             
         </>
     );

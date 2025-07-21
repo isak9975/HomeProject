@@ -1,14 +1,18 @@
 import { useNavigate, useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react";
+import {UserContext} from '../../contexts/UserContext'
 import {Button} from '@mui/material'
-import { useEffect, useState } from "react";
-import './Blog.css'
 import { API } from "../common/API";
+import './Blog.css'
+import Swal from "sweetalert2";
 
 export const Blog = () => {
      
     // 주소에서 카테고리 가져오기 :category
     const {category} = useParams();
     const navigate = useNavigate();
+
+    const {isLogin} = useContext(UserContext);
 
     const [board,setBoard] = useState([]);
 
@@ -28,18 +32,31 @@ export const Blog = () => {
         getAllPosts()
     },[])
 
+    const handleGo = (path) =>{
+            if (!isLogin) {
+            Swal.fire({
+                title: '로그인이 필요합니다',
+                icon: 'warning',
+                confirmButtonText: '확인',
+            });
+        return;
+        }
+    navigate(path);
+    }
+
+
     return(
         <div className="Btop">            
-            <h2>{`${category} 페이지 메인입니다.`}</h2>
+            <h2>여기는 <span className="highlight">{category}</span> 페이지 입니다.</h2>
             <div className="Bwritebutton">
-                {category!=='total'&&<Button variant="contained" onClick={()=>navigate(`/blog/write/${category}`)}>글쓰기</Button>}
+                {category!=='total'&&<Button variant="contained" onClick={()=>handleGo(`/blog/write/${category}`)}>글쓰기</Button>}
             </div>
 
             <div className="Blist">
                     {board
                         .filter(t => category === 'total' || t.boardCategory === category).reverse()
                         .map(board => (
-                        <div className="Bcard" key={board.boardNo} onClick={()=>{navigate(`/blog/detail/${board.boardNo}`)}}>
+                        <div className="Bcard" key={board.boardNo} onClick={()=>{handleGo(`/blog/detail/${board.boardNo}`)}}>
                             <div className="Bheader">
                                     <span className={`Bcategory Bcategory-${board.boardCategory}`}>[{board.boardCategory}]</span>
                                     <span className="Btitle">{board.boardNo}. {board.boardTitle}</span>

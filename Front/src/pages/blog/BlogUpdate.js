@@ -14,7 +14,6 @@ export const BlogUpdate = () => {
     // 전달받은 값
     const {state} = useLocation();
     const board = state;
-    console.log(state)
 
     // 초기값 세팅
     const [value, setValue] = useState(board.boardContent);
@@ -23,6 +22,7 @@ export const BlogUpdate = () => {
     const navigate = useNavigate();
 
     const {user} = useContext(UserContext);
+    const token = sessionStorage.getItem("TOKEN")
 
     useEffect(()=>{
         console.log(value)
@@ -49,16 +49,29 @@ export const BlogUpdate = () => {
         
         if(!response.isConfirmed) return 
 
-        navigate(`/board/${board.boardCategory}`)
+        navigate(-1)
+        window.scroll(0.0)
     }
 
     // (중요)수정하기 버튼 눌렀을 시
     const handleUpdate = async () => {
+
+        const response = await Swal.fire({
+            title :'글을 수정하시겠습니까?.',
+            icon:'question',
+            showCancelButton:true,
+            cancelButtonText:'아니요',
+            confirmButtonText:'예'
+        })
+
+        if(!response.isConfirmed)return
+
         const data = {
             boardCategory : board.boardCategory,
             boardTitle:title,
             boardContent : value,
             boardImg: 'default.jpg',
+
             boardLike:board.boardLike,
             boardUnLike:board.boardUnLike,
             boardView:board.boardView,
@@ -67,9 +80,10 @@ export const BlogUpdate = () => {
 
         const option = {
 
-            method:"POST",
+            method:"PUT",
             headers:{
                 "Content-Type":"application/json",
+                'Authorization': `Bearer ${token}`
             },
             body : JSON.stringify(data)
             }
@@ -87,10 +101,10 @@ export const BlogUpdate = () => {
                 console.log(error)
             } finally{
                 await Swal.fire({
-                title :'글쓰기가 성공하였습니다.',
+                title :'글 수정을 성공하였습니다.',
                 icon:'success',
                 })
-                navigate(`/board/${board.boardCategory}`)
+                navigate(`/blog/detail/${board.boardNo}`)
             }
     }
 
@@ -109,7 +123,7 @@ export const BlogUpdate = () => {
                         theme="snow" value={value} onChange={setValue} modules={modules} />
                 </div>
                 <div className='BWbutton'>
-                    <Button variant="contained" onClick={()=>handleUpdate()}>수정쓰기</Button>
+                    <Button variant="contained" onClick={()=>handleUpdate()}>수정하기</Button>
                     <Button variant="contained" onClick={()=>handleCancel()}>취소하기</Button>
                 </div>
             </div>

@@ -27,18 +27,6 @@ export const Header = () => {
         }
     }
 
-    const handleGo = (path) =>{
-        if (!isLogin) {
-        Swal.fire({
-            title: '로그인이 필요합니다',
-            icon: 'warning',
-            confirmButtonText: '확인',
-        });
-      return;
-    }
-    navigate(path);
-    }
-
 
     return(
         <div className='Hcontainer'>
@@ -50,10 +38,10 @@ export const Header = () => {
             </div>
 
             <div className='Hcontainer_center'>
-                <div className='Hblogbutton' onClick={()=>{handleGo('/blog/total')
+                <div className='Hblogbutton' onClick={()=>{navigate('/blog/total')
                     window.scroll(0,0)
-                }}>Community</div>
-                <div className='Hblogbutton' onClick={()=>{handleGo('/contact')
+                }}>DevBoard</div>
+                <div className='Hblogbutton' onClick={()=>{navigate('/contact')
                     window.scroll(0,0)
                 }}>ContactMe</div>
             </div>

@@ -38,13 +38,20 @@
     margin-top: 20px;
     height: 550px;
 }
+    .ql-editor img {
+        max-width: 100%;   
+        height: auto;       
+        max-height: 350px;  
+        display: block;
+        margin: 1rem auto; 
+    }
 
 
 .BWbutton {
-    gap:10px;
     margin-top: 20px;
     align-self: flex-end;
     padding: 0 50px;
+    
 }
 
 .BWbutton button {
@@ -54,6 +61,7 @@
     border-radius: 8px;
     background-color: #1976d2;
     color: white;
+    margin-right: 20px;
     transition: background-color 0.2s ease-in-out;
 }
 

@@ -47,7 +47,7 @@ const AppLayout = () => {
                 <ul className="nsidebarcenter">
                     <li><Link to={'/'} onClick={() => window.scroll(0, 0)}>Home</Link></li>
                     <li>
-                        <Link to={'/blog/total'} onClick={() => window.scroll(0, 0)}>Blog</Link>
+                        <Link to={'/blog/total'} onClick={() => window.scroll(0, 0)}>DevBoard</Link>
                             <ul className="nblogsubmenu">
                                 <li><Link to={'/blog/infomation'} onClick={() => window.scroll(0, 0)}>Infomation</Link></li>
                                 <li><Link to={'/blog/error'} onClick={() => window.scroll(0, 0)}>Error</Link></li>

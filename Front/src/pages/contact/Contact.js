@@ -9,7 +9,7 @@ import './Contact.css'
 export const Contact = () => {
 
     // S3에 저장된 이력서 링크
-    const resumeUrl = 'https://your-s3-url/resume.pdf'; // 실제 링크로 교체
+    const resumeUrl = 'https://home-project-file.s3.ap-northeast-2.amazonaws.com/%EA%B9%80%EC%9D%B4%EC%82%AD_%EC%9E%85%EC%82%AC%EC%A7%80%EC%9B%90%EC%84%9C.pdf';
 
     const user = JSON.parse(sessionStorage.getItem('userInfo'));
     const [email, setEmail] = useState(user?.userEmail || '');
@@ -50,7 +50,7 @@ export const Contact = () => {
             if (response.status === 200) {
                 localStorage.setItem(`emailSent_${email}`, 'true');
                 Swal.fire({
-                    title: '발송이 완료되었습니다.',
+                    title: '발송이 완료되었습니다. 감사합니다.',
                     icon: 'success'
                 });
             } else {
@@ -72,7 +72,11 @@ export const Contact = () => {
         <div className="CcontactContainer">
             <h1 className="CsectionTitle">📫 Contact Me</h1>
             <form className="Cform">
+                <div className="Cicontext">
+                    <h4>📧 메일 주소를 입력하시면 이력서를 자동으로 보내드립니다.</h4>
+                </div>
                 <div className="CiconBox">
+                    <h2>about me</h2>
                     <h2><a href="https://github.com/isak9975" target="_blank" rel="noopener noreferrer"><FaGithub fontSize={50}/> GitHub</a></h2>
                     <h2><a href="https://velog.io/@isak9975/posts" target="_blank" rel="noopener noreferrer"><SiVelog fontSize={50} /> Velog</a></h2>
                 </div>
