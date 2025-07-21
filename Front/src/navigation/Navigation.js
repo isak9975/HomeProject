@@ -5,17 +5,17 @@ import { Register } from '../pages/auth/Register'
 import { Main } from '../pages/common/Main'
 import { Header } from '../pages/common/Header'
 import { Footer } from '../pages/common/Footer'
-import { Blog } from '../pages/Blog' 
 import { Contact } from '../pages/Contact';
 import { UserContext } from '../contexts/UserContext';
 import { FindPassword } from '../pages/auth/FindPassword';
 import { FindUserId } from '../pages/auth/FindUserId';
 import { NewPassword } from '../pages/auth/NewPassword';
 import { BlogNavigation } from './BlogNavigation';
-import { BlogWrite } from '../pages/BlogWrite';
-import { BlogDetail } from '../pages/BlogDetail';
+import { BlogWrite } from '../pages/blog/BlogWrite';
+import { BlogDetail } from '../pages/blog/BlogDetail';
+import { Blog } from '../pages/blog/Blog' 
+import { BlogUpdate } from '../pages/blog/BlogUpdate';
 import './Navigation.css'
-import { BlogUpdate } from '../pages/BlogUpdate';
 
 const AppLayout = () => {
 
