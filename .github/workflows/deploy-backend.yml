@@ -49,4 +49,4 @@ jobs:
         screen -S spring-server -X quit || true
 
         echo "Starting Spring Boot in new screen session..."
-        screen -dmS spring-server java -jar /home/ubuntu/homeproject-0.0.1-SNAPSHOT.jar
+        screen -dmS spring-server java -jar ./Back/homeproject/build/libs/homeproject-0.0.1-SNAPSHOT.jar
