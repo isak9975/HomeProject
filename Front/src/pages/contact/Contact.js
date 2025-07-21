@@ -11,8 +11,9 @@ export const Contact = () => {
     // S3에 저장된 이력서 링크
     const resumeUrl = 'https://home-project-file.s3.ap-northeast-2.amazonaws.com/%EA%B9%80%EC%9D%B4%EC%82%AD_%EC%9E%85%EC%82%AC%EC%A7%80%EC%9B%90%EC%84%9C.pdf';
 
-    const user = JSON.parse(sessionStorage.getItem('userInfo'));
-    const [email, setEmail] = useState(user?.userEmail || '');
+    const [email, setEmail] = useState('');
+
+    console.log("publicKey:", process.env.REACT_APP_EMAIL_PUBLIC_KEY);
 
     const handleEmail = async () => {
         if(email===''){
