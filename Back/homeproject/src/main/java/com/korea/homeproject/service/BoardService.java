@@ -12,6 +12,7 @@ import com.korea.homeproject.model.UserEntity;
 import com.korea.homeproject.repository.BoardRepository;
 import com.korea.homeproject.repository.UserRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -37,6 +38,7 @@ public class BoardService {
 	
 	
 	//r
+	@Transactional
 	public List<BoardDTO> findAll(){
 		List<BoardEntity> boardEntities = boardRepository.findAll();
 		List<BoardDTO> result = boardEntities.stream().map(t->t.toDTO()).collect(Collectors.toList());
@@ -64,9 +66,9 @@ public class BoardService {
 	
 	
 	//u
+	@Transactional
 	public List<BoardDTO> update(BoardDTO dto){
-		
-		boardRepository.findById(dto.getBoardNo())
+		boardRepository.findByIdWithReplies(dto.getBoardNo())
 			.ifPresent(t -> {
 				t.setBoardTitle(dto.getBoardTitle());
 				t.setBoardCategory(dto.getBoardCategory());
@@ -74,15 +76,16 @@ public class BoardService {
 				t.setBoardImg(dto.getBoardImg());
 				boardRepository.save(t);
 				});
+		
 				
 		return findAll();
 	}
 	
 	
 	//u-좋아요,안좋아요,뷰어
+	@Transactional
 	public boolean updateState(BoardDTO dto) {
-		
-		boardRepository.findById(dto.getBoardNo())
+		boardRepository.findByIdWithReplies(dto.getBoardNo())
 			.ifPresent(t->{
 				t.setBoardLike(dto.getBoardLike());
 				t.setBoardUnLike(dto.getBoardUnLike());

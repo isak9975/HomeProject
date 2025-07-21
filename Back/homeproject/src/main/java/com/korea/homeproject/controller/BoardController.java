@@ -83,7 +83,6 @@ public class BoardController {
 	
 	//R-boardNo별로
 	@GetMapping("/detail/{boardNo}")
-	@Transactional
 	@Operation(summary = "게시판 번호 별로 찾기", description = "게시글 번호 별로 반환")
 	@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "성공"),
@@ -98,7 +97,6 @@ public class BoardController {
 	
 	//U
 	@PutMapping
-//	@Transactional
 	@Operation(summary = "게시글 수정", description = "게시글 수정")
 	@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "성공"),

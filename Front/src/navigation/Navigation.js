@@ -15,9 +15,23 @@ import { BlogWrite } from '../pages/blog/BlogWrite';
 import { BlogDetail } from '../pages/blog/BlogDetail';
 import { Blog } from '../pages/blog/Blog' 
 import { BlogUpdate } from '../pages/blog/BlogUpdate';
+import { API } from '../pages/common/API';
 import './Navigation.css'
 
+
 const AppLayout = () => {
+
+    useEffect(()=>{
+        const findData = async () => {
+            const response = await fetch(`${API}/board`)
+            const result  = await response.json();
+
+            setBoard(result)
+        }
+        findData()
+    },[])
+
+    const [board,setBoard] = useState('');
 
     const {isLogin,user} = useContext(UserContext);
 
@@ -62,7 +76,7 @@ const AppLayout = () => {
 
 
                 <div className="nstate">
-                    <div className="nstateitem"><span>총 포스트 :</span><span>12</span></div>
+                    <div className="nstateitem"><span>총 포스트 :</span><span>{board?.length}</span></div>
                     <div className="nstateitem"><span>총 조회수 :</span><span>100</span></div>
                     <div className="nstateitem"><span>오늘방문 :</span><span>45</span></div>
                 </div>
