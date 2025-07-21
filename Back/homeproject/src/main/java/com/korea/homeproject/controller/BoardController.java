@@ -37,7 +37,6 @@ public class BoardController {
 	
 	//C
 	@PostMapping
-	@Transactional
 	@Operation(summary = "게시글 작성", description = "게시글 작성")
 	@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "성공"),
@@ -56,7 +55,6 @@ public class BoardController {
 	
 	//R
 	@GetMapping
-	@Transactional
 	@Operation(summary = "게시글 찾기", description = "모든 게시글 반환")
 	@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "성공"),

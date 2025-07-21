@@ -25,6 +25,7 @@ public class BoardService {
 	private final UserRepository userRepository;
 	
 	//c
+	@Transactional
 	public List<BoardDTO> write(BoardDTO dto){
 		
 		UserEntity userEntity = userRepository.findById(dto.getUserNo()).get();
@@ -47,6 +48,7 @@ public class BoardService {
 	
 	
 	//r-category
+	@Transactional
 	public List<BoardDTO> findByCategory(String category){
 		
 		List<BoardDTO> result = boardRepository.findByBoardCategory(category).stream().map(t->t.toDTO()).collect(Collectors.toList());
@@ -56,6 +58,7 @@ public class BoardService {
 	
 	
 	//r-boardNo
+	@Transactional
 	public List<BoardDTO> findByBoardNo(Long boardNo){
 		
 		List<BoardDTO> result = boardRepository.findById(boardNo).stream().map(t->t.toDTO()).collect(Collectors.toList());
