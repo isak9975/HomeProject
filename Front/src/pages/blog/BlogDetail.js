@@ -36,11 +36,10 @@ export const BlogDetail = () => {
         if (!board.boardNo) return; 
 
         const token = sessionStorage.getItem('TOKEN');
-        const currentView = board.boardView;
 
         const data = {
             boardNo: board.boardNo,
-            boardView: currentView + 1,
+            boardView: board.boardView + 1,
             boardLike: board.boardLike,
             boardUnLike: board.boardUnLike,
         };
@@ -58,8 +57,9 @@ export const BlogDetail = () => {
                 boardView: prev.boardView + 1,
             }));
         });
-    
-    }, [board.boardNo,board.boardLike,board.boardUnLike]); // board.boardNo가 바뀔 때만 실행
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // board.boardView 의존성 검사 패스 - 무한 루프 방지
+    }, [board.boardNo]); // board.boardNo가 바뀔 때만 실행
 
 
     // 좋아요
