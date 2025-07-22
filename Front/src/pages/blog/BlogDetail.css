@@ -143,11 +143,12 @@
 }
   .BDreplynickname{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 40px;
 
-    width: 100px;
+    width: 70px;
     background-color: #7bb4b0;
     border-radius: 8px;
   }
@@ -185,4 +186,9 @@
     border-radius: 10px;
     background-color: rgba(173, 216, 230, 0.3);
     color: white;
+}
+
+.BDreplydetail{
+  display: flex;
+  flex-direction: column;
 }

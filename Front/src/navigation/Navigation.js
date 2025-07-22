@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Outlet, Route, Routes,Link } from 'react-router-dom'
+import { Outlet, Route, Routes,Link, useLocation } from 'react-router-dom'
 import { Login } from '../pages/auth/Login'
 import { Register } from '../pages/auth/Register'
 import { Main } from '../pages/common/Main'
@@ -16,10 +16,24 @@ import { BlogDetail } from '../pages/blog/BlogDetail';
 import { Blog } from '../pages/blog/Blog' 
 import { BlogUpdate } from '../pages/blog/BlogUpdate';
 import { API } from '../pages/common/API';
+import ReactGa from 'react-ga4';
 import './Navigation.css'
 
 
+
+
 const AppLayout = () => {
+
+    ReactGa.initialize("G-6ZFXKW15R6");
+
+    const location = useLocation();
+
+    useEffect(()=>{
+        ReactGa.send({
+            hitType:'pageview',
+            page:location.pathname + location.search,
+        });
+    },[location])
 
     useEffect(()=>{
         const findData = async () => {

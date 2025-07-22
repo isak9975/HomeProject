@@ -236,6 +236,7 @@ export const BlogDetail = () => {
                     title: '댓글 작성을 성공했습니다',
                     icon: 'success',
                 });
+                setReply('')
                 // navigate(0)
                 findData();
             })
@@ -266,7 +267,7 @@ export const BlogDetail = () => {
             setEdit(true)
 
             if(newReply===''){
-                setReply(replys.replyContent)
+                setNewReply(replys.replyContent)
                 return
             }
 
@@ -295,6 +296,29 @@ export const BlogDetail = () => {
                 },
                 body: JSON.stringify(data)
             })
+                        .then(res=>{
+                if(!res.ok){
+                    throw new Error('댓글 수정 실패');
+                }
+                return res.json();
+            })
+            .then(result =>{
+                Swal.fire({
+                    title: '댓글 수정을 성공했습니다',
+                    icon: 'success',
+                });
+                setNewReply('')
+                findData();
+                navigate(0)
+            })
+            .catch(error=>{
+                console.log('에러', error);
+                Swal.fire({
+                    title: '[에러]댓글 수정에 실패했습니다',
+                    icon: 'error',
+                });
+            })
+
 
         }
 
@@ -322,7 +346,7 @@ export const BlogDetail = () => {
             if(!(answer.isConfirmed))return
 
             try {
-                const response = await fetch(`${API}/reply?replyNo=${replyNo+1}`,{
+                const response = await fetch(`${API}/reply?replyNo=${replyNo}`,{
                     method:'DELETE',
                     headers: {
                     'Authorization': `Bearer ${token}`
@@ -387,7 +411,7 @@ export const BlogDetail = () => {
 
             <div className="BDreplycontainer">
                 <div className="BDreply" style={{marginBottom:'20px'}} >                
-                    <span className="BDreplynickname">{user?.userNickname}</span>
+                    <span className="BDreplynickname">유저{user.userNo}</span>
                     <TextField variant="standard" placeholder="댓글을 입력해주세요"
                         value={reply} onChange={e=>setReply(e.target.value)} fullWidth/>
                     <span className="BD-btn-relply"
@@ -398,9 +422,10 @@ export const BlogDetail = () => {
                     <div className="BDreplylist" key={t.replyNo}>
                         <span className="BDreplynickname">유저{t.userNo}</span>
                         <span style={{flex:'1',display:'flex', flexDirection:'row',color:'gray', justifyContent:'space-between'}}>
-                            
-                            {edit?<TextField fullWidth value={newReply} onChange={e=>setNewReply(e.target.value)} />:<><span>{t.replyCreateAt}</span><span>{t.replyContent}</span></>}
-                            </span>
+                            {edit?<TextField fullWidth value={newReply} onChange={e=>setNewReply(e.target.value)} />
+                                :
+                            <div className="BDreplydetail"><small>작성일: {t.replyCreateAt?.split('T')[0]}</small><span>{t.replyContent}</span></div>}
+                        </span>
                         <div>
                             <span style={{marginRight:'10px'}} className="BD-btn" onClick={()=>handleReplyUpdate(t)}>수정</span>
                             <span className="BD-btn" onClick={()=>handleReplyDelete(t.replyNo)}>삭제</span>

@@ -68,7 +68,7 @@ export const Blog = () => {
 
                             <div className="Binfo">
                                 <span>작성자 번호: {board.userNo}</span>
-                                <span>작성일: {board.boardCreateAt}</span>
+                                <span>작성일: {board.boardCreateAt?.split('T')[0]}</span>
                                 <span>조회수: {board.boardView}</span>
                             </div>
                         </div>
