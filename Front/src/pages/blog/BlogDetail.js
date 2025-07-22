@@ -233,6 +233,7 @@ export const BlogDetail = () => {
                     title: '댓글 수정을 성공했습니다',
                     icon: 'success',
                 });
+                navigate(0)
             })
             .catch(error=>{
                 console.log('에러', error);
@@ -304,6 +305,7 @@ export const BlogDetail = () => {
                 });
             return;
             }
+            console.log(replyNo)
 
             const answer = await Swal.fire({
                 title: '정말 삭제 하시겠습니까?',
@@ -316,7 +318,7 @@ export const BlogDetail = () => {
             if(!(answer.isConfirmed))return
 
             try {
-                const response = await fetch(`${API}/reply?replyNo=${replyNo}`,{
+                const response = await fetch(`${API}/reply?replyNo=${replyNo+1}`,{
                     method:'DELETE',
                     headers: {
                     'Content-Type': 'application/json',
@@ -325,6 +327,7 @@ export const BlogDetail = () => {
                 })
 
                 const result = await response.json();
+                console.log(result)
 
                 if(result){
                     Swal.fire({
@@ -381,7 +384,7 @@ export const BlogDetail = () => {
 
             <div className="BDreplycontainer">
                 <div className="BDreply" style={{marginBottom:'20px'}} >                
-                    <span className="BDreplynickname">{user.userNickname}</span>
+                    <span className="BDreplynickname">{user?.userNickname}</span>
                     <TextField variant="standard" placeholder="댓글을 입력해주세요"
                         value={reply} onChange={e=>setReply(e.target.value)} fullWidth/>
                     <span className="BD-btn-relply"
@@ -397,10 +400,10 @@ export const BlogDetail = () => {
                             </span>
                         <div>
                             <span style={{marginRight:'10px'}} className="BD-btn" onClick={()=>handleReplyUpdate(t)}>수정</span>
-                            <span className="BD-btn" onClick={()=>handleReplyDelete()}>삭제</span>
+                            <span className="BD-btn" onClick={()=>handleReplyDelete(t.replyNo)}>삭제</span>
                         </div>
                     </div>
-                    ))}
+                    )).reverse()}
             </div>
             
         </>

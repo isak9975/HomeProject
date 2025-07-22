@@ -82,7 +82,7 @@ public class ReplyService {
 	
 	//d
 	public boolean delete(long replyNo) {
-		if(replyNo>=0) {
+		if(replyNo<=0) {
 			throw new RuntimeException("잘못된 댓글 번호입니다.");
 		}
 		
