@@ -122,8 +122,10 @@
   margin: 0 auto;
 
   display: flex;
+  flex-direction: column;
   border-radius: 10px;
-  background-color: 	#E0E0E0;
+  /* background-color: 	#E0E0E0; */
+  background-color: rgba(173, 216, 230, 0.5);
   margin-bottom: 20px;
 }
 
@@ -131,12 +133,12 @@
 .BDreply {
   padding: 0 2rem;
   display: flex;
+  margin-top: 20px;
   width: 100%;
   gap: 1rem;
   font-size: 0.9rem;
   /* padding : 0 20px; */
   border-radius: 10px;
-  background-color: white;
   color: white;
 }
   .BDreplynickname{
@@ -168,3 +170,19 @@
     .BD-btn-relply:hover {
       background-color: #ffe3e3;
     }
+
+
+  .BDreplylist {
+    padding: 10px 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    gap: 1rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background-color: rgba(173, 216, 230, 0.3);
+    color: white;
+}

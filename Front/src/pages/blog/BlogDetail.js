@@ -13,6 +13,8 @@ export const BlogDetail = () => {
 
     const [board,setBoard] = useState({});
     const [reply,setReply] = useState('');
+    const [newReply,setNewReply] = useState('');
+    const [edit,setEdit] = useState(false);
 
     const navigate = useNavigate();
 
@@ -22,16 +24,16 @@ export const BlogDetail = () => {
     const likeKey = `liked_${board.boardNo}_${token}`;
     const unlikeKey = `unliked_${board.boardNo}_${token}`;
 
-    console.log(board.replyDtolist)
-    console.log(user)
+    // console.log(board.replyDtolist)
+    // console.log(user)
 
     // 글 읽어오기
     useEffect(() => {
-    const findData = async () => {
+        const findData = async () => {
         const data = await fetch(`${API}/board/detail/${boardNo}`);
         const result = await data.json();
         setBoard(result[0]);
-        console.log(result[0])
+        // console.log(result[0])
     };
     findData();
     }, [boardNo]);
@@ -148,7 +150,7 @@ export const BlogDetail = () => {
             navigate(`/blog/update/${board.boardNo}`,{state:board})
         }
 
-        //삭제하기 버튼 누를시
+        //게시글 삭제하기 버튼 누를시
         const handleDelete = async () => {
 
             if (user.userNo !== board.userNo&&isAdmin) {
@@ -182,16 +184,166 @@ export const BlogDetail = () => {
             });
         }
 
-        // 댓글 작성하기 버튼 누를시 수정하기 페이지로
-        const handleReply = () => {   
+        // 댓글입력
+        const handleReply = async () => {   
 
-            if (user.userNo !== board.userNo&&!isAdmin) {
+            if (reply==='') {
+                Swal.fire({
+                    title: '내용을 입력해주세요',
+                    icon: 'warning',
+                    confirmButtonText: '확인',
+                });
+            return;
+            }
+
+            const answer = await Swal.fire({
+                title: '댓글을 작성 하시겠습니까?',
+                icon: 'question',
+                confirmButtonText: '확인',
+                cancelButtonText:'아니요',
+                showCancelButton:true,
+            });
+            
+            if(!(answer.isConfirmed))return
+
+            const data = {
+                replyContent : reply,
+                replyLike:0,
+                replyUnlike:0,
+                boardNo:board.boardNo,
+                userNo:user.userNo,
+            }
+
+            await fetch(`${API}/reply`,{
+                method:'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res=>{
+                if(!res.ok){
+                    throw new Error('댓글 등록 실패');
+                }
+                return res.json();
+            })
+            .then(result =>{
+                Swal.fire({
+                    title: '댓글 수정을 성공했습니다',
+                    icon: 'success',
+                });
+            })
+            .catch(error=>{
+                console.log('에러', error);
+                Swal.fire({
+                    title: '[에러]댓글 수정에 실패했습니다',
+                    icon: 'error',
+                });
+            })
+
+
+        }
+
+        // 댓글 업데이트하기
+        const handleReplyUpdate = async (replys) => {   
+
+            if (user.userNo !== replys.userNo&&!isAdmin) {
                 Swal.fire({
                     title: '작성자만 수정 할 수 있습니다',
                     icon: 'warning',
                     confirmButtonText: '확인',
                 });
             return;
+            }
+
+            // 편집모드 시작
+            setEdit(true)
+
+            if(newReply===''){
+                setReply(replys.replyContent)
+                return
+            }
+
+            const answer = await Swal.fire({
+                title: '수정 하시겠습니까?',
+                icon: 'question',
+                confirmButtonText: '확인',
+                cancelButtonText:'아니요',
+                showCancelButton:true,
+            });
+            
+            if(!(answer.isConfirmed))return
+
+            const data = {
+                replyNo:replys.replyNo,
+                replyContent : newReply,
+                boardNo:board.boardNo,
+                userNo:user.userNo,
+            }
+
+           await fetch(`${API}/reply`,{
+                method:'PUT',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            })
+
+        }
+
+        // 댓글 삭제하기
+        const handleReplyDelete = async (replyNo) => {   
+
+            if (user.userNo !== board.replyDtolist.userNo&&!isAdmin) {
+                Swal.fire({
+                    title: '작성자만 삭제 할 수 있습니다',
+                    icon: 'warning',
+                    confirmButtonText: '확인',
+                });
+            return;
+            }
+
+            const answer = await Swal.fire({
+                title: '정말 삭제 하시겠습니까?',
+                icon: 'warning',
+                confirmButtonText: '확인',
+                cancelButtonText:'아니요',
+                showCancelButton:true,
+            });
+            
+            if(!(answer.isConfirmed))return
+
+            try {
+                const response = await fetch(`${API}/reply?replyNo=${replyNo}`,{
+                    method:'DELETE',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                    },
+                })
+
+                const result = await response.json();
+
+                if(result){
+                    Swal.fire({
+                        title: '삭제 성공했습니다',
+                        icon: 'success',
+                    });
+                    navigate(`/blog/detail/${board.boardNo}`)
+                }else{
+                    Swal.fire({
+                        title: '삭제 실패했습니다',
+                        icon: 'warning',
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                        title: '[에러]]삭제 실패했습니다',
+                        icon: 'error',
+                    });
+                console.log(error)
             }
 
         }
@@ -226,14 +378,9 @@ export const BlogDetail = () => {
 
             </div>
 
-            {/* <div className="BDfooterer">
-                <span className="BD-btn" onClick={()=>handleUpdate()}>수정하기</span>
-                <span className="BD-btn" onClick={()=>handleDelete()}>삭제하기</span>
-            </div> */}
-
 
             <div className="BDreplycontainer">
-                <div className="BDreply" >                
+                <div className="BDreply" style={{marginBottom:'20px'}} >                
                     <span className="BDreplynickname">{user.userNickname}</span>
                     <TextField variant="standard" placeholder="댓글을 입력해주세요"
                         value={reply} onChange={e=>setReply(e.target.value)} fullWidth/>
@@ -242,9 +389,16 @@ export const BlogDetail = () => {
                 </div>
 
                 {board.replyDtolist?.map(t=>(
-                    <div className="BDreply">
-                        <span className="BDreplynickname">{t.userNo}</span>
-                        <span>{t.content}</span>
+                    <div className="BDreplylist" key={t.replyNo}>
+                        <span className="BDreplynickname">유저{t.userNo}</span>
+                        <span style={{flex:'1',display:'flex', flexDirection:'row',color:'gray', justifyContent:'space-between'}}>
+                            
+                            {edit?<TextField fullWidth value={newReply} onChange={e=>setNewReply(e.target.value)} />:<><span>{t.replyCreateAt}</span><span>{t.replyContent}</span></>}
+                            </span>
+                        <div>
+                            <span style={{marginRight:'10px'}} className="BD-btn" onClick={()=>handleReplyUpdate(t)}>수정</span>
+                            <span className="BD-btn" onClick={()=>handleReplyDelete()}>삭제</span>
+                        </div>
                     </div>
                     ))}
             </div>
