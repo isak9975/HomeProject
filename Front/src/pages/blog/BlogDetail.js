@@ -28,14 +28,17 @@ export const BlogDetail = () => {
     // console.log(user)
 
     // 글 읽어오기
-    useEffect(() => {
-        const findData = async () => {
+    const findData = async () => {
         const data = await fetch(`${API}/board/detail/${boardNo}`);
         const result = await data.json();
         setBoard(result[0]);
         // console.log(result[0])
     };
-    findData();
+
+
+    // 글 읽어오기 - useEffect
+    useEffect(() => {
+        findData();
     }, [boardNo]);
 
     // 2. 조회수 업데이트 
@@ -230,15 +233,16 @@ export const BlogDetail = () => {
             })
             .then(result =>{
                 Swal.fire({
-                    title: '댓글 수정을 성공했습니다',
+                    title: '댓글 작성을 성공했습니다',
                     icon: 'success',
                 });
-                navigate(0)
+                // navigate(0)
+                findData();
             })
             .catch(error=>{
                 console.log('에러', error);
                 Swal.fire({
-                    title: '[에러]댓글 수정에 실패했습니다',
+                    title: '[에러]댓글 작성에 실패했습니다',
                     icon: 'error',
                 });
             })
@@ -321,7 +325,6 @@ export const BlogDetail = () => {
                 const response = await fetch(`${API}/reply?replyNo=${replyNo+1}`,{
                     method:'DELETE',
                     headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                     },
                 })
@@ -334,7 +337,7 @@ export const BlogDetail = () => {
                         title: '삭제 성공했습니다',
                         icon: 'success',
                     });
-                    navigate(`/blog/detail/${board.boardNo}`)
+                    findData();
                 }else{
                     Swal.fire({
                         title: '삭제 실패했습니다',

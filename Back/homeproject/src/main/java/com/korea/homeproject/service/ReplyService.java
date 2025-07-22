@@ -14,6 +14,7 @@ import com.korea.homeproject.repository.BoardRepository;
 import com.korea.homeproject.repository.ReplyRepository;
 import com.korea.homeproject.repository.UserRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -81,12 +82,19 @@ public class ReplyService {
 	
 	
 	//d
+	@Transactional
 	public boolean delete(long replyNo) {
+		
+		if(replyRepository.findById(replyNo).isEmpty()) {
+			throw new RuntimeException("없는 댓글번호입니다.");
+		}
+		
 		if(replyNo<=0) {
 			throw new RuntimeException("잘못된 댓글 번호입니다.");
 		}
 		
 		replyRepository.deleteById(replyNo);
+		
 		return true;
 	}
 }

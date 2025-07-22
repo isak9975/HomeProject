@@ -118,6 +118,7 @@ public class ReplyController {
 	})
 	@Parameter(name = "replyNo",description = "댓글 번호로 댓글 삭제")
 	public ResponseEntity<?> delete(@RequestParam long replyNo){
+		System.out.println("전달받은 댓글 번호 : "+replyNo);
 		boolean result = replyService.delete(replyNo);
 		return ResponseEntity.ok().body(result);
 	}
