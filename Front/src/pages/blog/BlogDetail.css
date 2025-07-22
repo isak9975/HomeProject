@@ -2,17 +2,19 @@
   max-width: 800px;
   min-height:600px;
   margin: 2rem auto;
-  padding: 2rem;
+  margin-bottom: 20px;
+  padding: 2rem 0;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 
-  overflow: auto;
+  position: relative;
 }
 
 .BDheader {
   border-bottom: 1px solid #dee2e6;
   padding-bottom: 1rem;
+  padding: 0 2rem;
   margin-bottom: 1.5rem;
 }
 
@@ -94,17 +96,74 @@
     font-weight: 500;
 }
 
+  .BD-btn:hover {
+    background-color: #ffe3e3;
+  }
+
 .BDfooterer {
   max-width: 800px;
-  margin: 2rem auto;
-  
+  width: 100%;  
+
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
   font-size: 0.9rem;
   padding : 20px;
   border-radius: 10px;
-  background-color: lightgray;
+  background-color: #ECECEC;
   color: white;
+
+  position: absolute;
+  bottom: 0;
+}
+
+.BDreplycontainer {
+  max-width: 800px;
+  margin: 0 auto;
+
+  display: flex;
+  border-radius: 10px;
+  background-color: 	#E0E0E0;
   margin-bottom: 20px;
 }
+
+/* 댓글 작성 컨테이너 */
+.BDreply {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  font-size: 0.9rem;
+  /* padding : 0 20px; */
+  border-radius: 10px;
+  background-color: white;
+  color: white;
+}
+  .BDreplynickname{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+
+    width: 100px;
+    background-color: #7bb4b0;
+    border-radius: 8px;
+  }
+
+  .BD-btn-relply{
+    display: flex;
+    justify-content: center;
+    width: 110px;
+
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: yellowgreen;
+  
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+    .BD-btn-relply:hover {
+      background-color: #ffe3e3;
+    }

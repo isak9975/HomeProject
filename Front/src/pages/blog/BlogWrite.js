@@ -38,7 +38,7 @@ export const BlogWrite = () => {
     const handleWrite = async () => {
 
         // 내용없으면 반환
-        if(title?.trim===''||value?.trim===''){
+        if(title===''||value===''){
             await Swal.fire({
                 title :'내용을 입력해주세요.',
                 icon:'error',

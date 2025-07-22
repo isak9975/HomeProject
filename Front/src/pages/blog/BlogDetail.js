@@ -2,15 +2,17 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react";
 import { API } from "../common/API";
 import DOMPurify from 'dompurify';
-import './BlogDetail.css'
+import {TextField, } from '@mui/material';
 import { UserContext } from "../../contexts/UserContext";
 import Swal from "sweetalert2";
+import './BlogDetail.css'
 
 export const BlogDetail = () => {
 
     const {boardNo} = useParams();
 
     const [board,setBoard] = useState({});
+    const [reply,setReply] = useState('');
 
     const navigate = useNavigate();
 
@@ -19,6 +21,9 @@ export const BlogDetail = () => {
     const token = sessionStorage.getItem('TOKEN');
     const likeKey = `liked_${board.boardNo}_${token}`;
     const unlikeKey = `unliked_${board.boardNo}_${token}`;
+
+    console.log(board.replyDtolist)
+    console.log(user)
 
     // 글 읽어오기
     useEffect(() => {
@@ -177,6 +182,21 @@ export const BlogDetail = () => {
             });
         }
 
+        // 댓글 작성하기 버튼 누를시 수정하기 페이지로
+        const handleReply = () => {   
+
+            if (user.userNo !== board.userNo&&!isAdmin) {
+                Swal.fire({
+                    title: '작성자만 수정 할 수 있습니다',
+                    icon: 'warning',
+                    confirmButtonText: '확인',
+                });
+            return;
+            }
+
+        }
+
+        // html 코드 한번 걸러내기
         const cleanHtml = DOMPurify.sanitize(board.boardContent);
 
     return (
@@ -199,12 +219,34 @@ export const BlogDetail = () => {
                     <div dangerouslySetInnerHTML={{ __html: cleanHtml }} />
                 </div>
 
- 
-                
+                <div className="BDfooterer">
+                    <span className="BD-btn" onClick={()=>handleUpdate()}>수정하기</span>
+                    <span className="BD-btn" onClick={()=>handleDelete()}>삭제하기</span>
+                </div>
+
             </div>
-            <div className="BDfooterer">
-                <span className="BD-btn" onClick={()=>handleUpdate()} >수정하기</span>
+
+            {/* <div className="BDfooterer">
+                <span className="BD-btn" onClick={()=>handleUpdate()}>수정하기</span>
                 <span className="BD-btn" onClick={()=>handleDelete()}>삭제하기</span>
+            </div> */}
+
+
+            <div className="BDreplycontainer">
+                <div className="BDreply" >                
+                    <span className="BDreplynickname">{user.userNickname}</span>
+                    <TextField variant="standard" placeholder="댓글을 입력해주세요"
+                        value={reply} onChange={e=>setReply(e.target.value)} fullWidth/>
+                    <span className="BD-btn-relply"
+                    onClick={()=>handleReply()}>작성하기</span>
+                </div>
+
+                {board.replyDtolist?.map(t=>(
+                    <div className="BDreply">
+                        <span className="BDreplynickname">{t.userNo}</span>
+                        <span>{t.content}</span>
+                    </div>
+                    ))}
             </div>
             
         </>
