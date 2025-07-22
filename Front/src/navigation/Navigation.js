@@ -24,7 +24,7 @@ import './Navigation.css'
 
 const AppLayout = () => {
 
-    ReactGa.initialize("G-6ZFXKW15R6");
+    ReactGa.initialize("G-9GZYCMFFHY");
 
     const location = useLocation();
 
