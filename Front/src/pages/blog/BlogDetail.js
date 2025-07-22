@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { API } from "../common/API";
 import DOMPurify from 'dompurify';
 import {TextField, } from '@mui/material';
@@ -28,18 +28,18 @@ export const BlogDetail = () => {
     // console.log(user)
 
     // 글 읽어오기
-    const findData = async () => {
+    const findData = useCallback(async () => {
         const data = await fetch(`${API}/board/detail/${boardNo}`);
         const result = await data.json();
         setBoard(result[0]);
         // console.log(result[0])
-    };
+    },[boardNo])
 
 
     // 글 읽어오기 - useEffect
     useEffect(() => {
         findData();
-    }, [boardNo]);
+    }, [findData]);
 
     // 2. 조회수 업데이트 
     useEffect(() => {
