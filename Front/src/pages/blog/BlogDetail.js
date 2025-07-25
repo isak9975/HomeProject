@@ -387,8 +387,8 @@ export const BlogDetail = () => {
                 <div className="BDheader">
                     <h2 className="BDtitle">[{board.boardCategory}] {board.boardTitle}</h2>
                     <div className="BDfooter">
-                        <span className="BDlike-btn" onClick={handleLike} >좋아요 ❤️ {board.boardLike}</span>
-                        <span className="BDdislike-btn" onClick={handleUnLike}>싫어요 💔 {board.boardUnLike}</span>
+                        <button className="BDlike-btn" onClick={handleLike} >좋아요 ❤️ {board.boardLike}</button>
+                        <button className="BDdislike-btn" onClick={handleUnLike}>싫어요 💔 {board.boardUnLike}</button>
                     </div>
                     <div className="BDinfo">
                         <span>작성자 번호: {board.userNo}</span>
@@ -402,8 +402,8 @@ export const BlogDetail = () => {
                 </div>
 
                 <div className="BDfooterer">
-                    <span className="BD-btn" onClick={()=>handleUpdate()}>수정하기</span>
-                    <span className="BD-btn" onClick={()=>handleDelete()}>삭제하기</span>
+                    <button className="BD-btn" onClick={()=>handleUpdate()}>수정하기</button>
+                    <button className="BD-btn" onClick={()=>handleDelete()}>삭제하기</button>
                 </div>
 
             </div>
@@ -414,8 +414,8 @@ export const BlogDetail = () => {
                     <span className="BDreplynickname">유저{user.userNo}</span>
                     <TextField variant="standard" placeholder="댓글을 입력해주세요"
                         value={reply} onChange={e=>setReply(e.target.value)} fullWidth/>
-                    <span className="BD-btn-relply"
-                    onClick={()=>handleReply()}>작성하기</span>
+                    <button className="BD-btn-relply"
+                    onClick={()=>handleReply()}>작성하기</button>
                 </div>
 
                 {board.replyDtolist?.map(t=>(
@@ -427,8 +427,8 @@ export const BlogDetail = () => {
                             <div className="BDreplydetail"><small>작성일: {t.replyCreateAt?.split('T')[0]}</small><span>{t.replyContent}</span></div>}
                         </span>
                         <div>
-                            <span style={{marginRight:'10px'}} className="BD-btn" onClick={()=>handleReplyUpdate(t)}>수정</span>
-                            <span className="BD-btn" onClick={()=>handleReplyDelete(t.replyNo)}>삭제</span>
+                            <button style={{marginRight:'10px'}} className="BD-btn" onClick={()=>handleReplyUpdate(t)}>수정</button>
+                            <button className="BD-btn" onClick={()=>handleReplyDelete(t.replyNo)}>삭제</button>
                         </div>
                     </div>
                     )).reverse()}

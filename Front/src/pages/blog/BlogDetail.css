@@ -70,7 +70,7 @@
     padding: 8px 16px;
     border-radius: 20px;
     background-color: #f0f0f0;
-    cursor: pointer;
+    border: 0;
     transition: all 0.2s ease-in-out;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-weight: 500;
@@ -89,7 +89,8 @@
     padding: 8px 16px;
     border-radius: 20px;
     background-color: #7bb4b0;
-    cursor: pointer;
+    border: 0;
+    color: white;
     transition: all 0.2s ease-in-out;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-weight: 500;
@@ -164,7 +165,8 @@
     font-weight: 500;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
-    cursor: pointer;
+    border: 0;
+    color: white;
   }
 
     .BD-btn-relply:hover {

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {TextField, Button, Alert} from '@mui/material'
+import { BottomButton } from './BottomButton'
 import Swal from 'sweetalert2'
 import { API } from '../common/API'
 import './Register.css'
-import './FindPassword.css'
+
 
 export const Register = () => {
 
@@ -319,33 +320,7 @@ export const Register = () => {
                     onClick={handleRegister}
                     disabled={(error.message)}
                 >회원가입</Button>
-                {/* 하단 네비게이션 블럭 */}
-                <div className='FPbottom'>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/login')}
-                    >
-                        로그인
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/register')}
-                    >
-                        회원가입
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/finduserid')}
-                    >
-                        아이디 찾기
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/findpassword')}
-                    >
-                        비밀번호 찾기
-                    </button>
-                </div>
+                <BottomButton/>
             </div>
             
         </div>

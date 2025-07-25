@@ -2,8 +2,8 @@ import { useContext, useState } from 'react'
 import {TextField, Button} from '@mui/material'
 import {UserContext} from '../../contexts/UserContext'
 import { API } from '../common/API'
+import { BottomButton } from './BottomButton'
 import './Login.css'
-import './FindPassword.css'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 
@@ -91,33 +91,7 @@ export const Login = () =>{
                     onClick={handleLogin}
                 >로그인</Button>
                 
-                {/* 하단 네비게이션 블럭 */}
-                <div className='FPbottom'>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/login')}
-                    >
-                        로그인
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/register')}
-                    >
-                        회원가입
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/finduserid')}
-                    >
-                        아이디 찾기
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/findpassword')}
-                    >
-                        비밀번호 찾기
-                    </button>
-                </div>
+                <BottomButton/>
             </div>
             
         </div>

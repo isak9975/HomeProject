@@ -3,13 +3,10 @@ import {TextField, Button, Alert} from '@mui/material'
 import { API } from '../common/API'
 import { FcSettings } from "react-icons/fc";
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
+import { BottomButton } from './BottomButton'
 import './Login.css'
-import './FindPassword.css'
 
 export const FindUserId = () =>{
-
-    const navigate = useNavigate();
 
     const [userId,setUserId] = useState("")
     const [userEmail,setUserEmail] = useState("")
@@ -66,33 +63,7 @@ export const FindUserId = () =>{
                     onClick={handleFindByEmail}
                 >아이디 찾기</Button>
                 
-                {/* 하단 네비게이션 블럭 */}
-                <div className='FPbottom'>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/login')}
-                    >
-                        로그인
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/register')}
-                    >
-                        회원가입
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/finduserid')}
-                    >
-                        아이디 찾기
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/findpassword')}
-                    >
-                        비밀번호 찾기
-                    </button>
-                </div>
+                <BottomButton/>
             </div>
         </div>
     )

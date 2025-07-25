@@ -5,7 +5,7 @@ import './Login.css'
 import Swal from 'sweetalert2'
 import { FcSearch } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom'
-import './FindPassword.css'
+import { BottomButton } from './BottomButton'
 
 export const FindPassword = () =>{
 
@@ -139,33 +139,7 @@ export const FindPassword = () =>{
                 </div>
 
 
-                {/* 하단 네비게이션 블럭 */}
-                <div className='FPbottom'>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/login')}
-                    >
-                        로그인
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/register')}
-                    >
-                        회원가입
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/finduserid')}
-                    >
-                        아이디 찾기
-                    </button>
-                    <button
-                        className='FPbottombutton'
-                        onClick={() => navigate('/findpassword')}
-                    >
-                        비밀번호 찾기
-                    </button>
-                </div>
+                <BottomButton/>
             </div>
             
         </div>
