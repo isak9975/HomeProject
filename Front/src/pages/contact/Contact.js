@@ -102,7 +102,7 @@ export const Contact = () => {
                     <Button 
                         variant="outlined"
                         color="secondary"
-                        onClick={() => window.open(resumeUrl, '_blank')}
+                        onClick={() => window.open(resumeUrl, '_blank','noopener,noreferrer')}
                         className="CpreviewBtn"
                     >
                         이력서 미리보기
