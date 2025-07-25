@@ -2,9 +2,10 @@ import { useState } from 'react'
 import {TextField, Button, Alert} from '@mui/material'
 import { API } from '../common/API'
 import { FcSettings } from "react-icons/fc";
-import './Login.css'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
+import './Login.css'
+import './FindPassword.css'
 
 export const FindUserId = () =>{
 
@@ -66,40 +67,31 @@ export const FindUserId = () =>{
                 >아이디 찾기</Button>
                 
                 {/* 하단 네비게이션 블럭 */}
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    gap: '15px',
-                    fontSize: '13px',
-                    backgroundColor: '#f9f9f9',
-                    padding : '10px 0',
-                    borderRadius: '10px',
-                    boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
-                }}>
-                    <span
-                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                <div className='FPbottom'>
+                    <button
+                        className='FPbottombutton'
                         onClick={() => navigate('/login')}
                     >
                         로그인
-                    </span>
-                    <span
-                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                    </button>
+                    <button
+                        className='FPbottombutton'
                         onClick={() => navigate('/register')}
                     >
                         회원가입
-                    </span>
-                    <span
-                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                    </button>
+                    <button
+                        className='FPbottombutton'
                         onClick={() => navigate('/finduserid')}
                     >
                         아이디 찾기
-                    </span>
-                    <span
-                        style={{ cursor: 'pointer', color: '#555', fontWeight: '500' }}
+                    </button>
+                    <button
+                        className='FPbottombutton'
                         onClick={() => navigate('/findpassword')}
                     >
                         비밀번호 찾기
-                    </span>
+                    </button>
                 </div>
             </div>
         </div>

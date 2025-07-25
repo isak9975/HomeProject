@@ -40,28 +40,28 @@ export const Header = () => {
             </div>
 
             <div className='Hcontainer_center'>
-                <div className='Hblogbutton' onClick={()=>{navigate('/blog/total')
+                <button className='Hblogbutton' onClick={()=>{navigate('/blog/total')
                     window.scroll(0,0)
-                }}>DevBoard</div>
-                <div className='Hblogbutton' onClick={()=>{navigate('/contact')
+                }}>DevBoard</button>
+                <button className='Hblogbutton' onClick={()=>{navigate('/contact')
                     window.scroll(0,0)
-                }}>ContactMe</div>
+                }}>ContactMe</button>
             </div>
 
             <div className='Hcontainer_right'>
                 
                 {!isLogin&&<Link className='Hloginbutton' to={'/login'}>로그인</Link>}
                 {!isLogin&&<Link className='Hregisterbutton' to={'/register'}>회원가입</Link>}
-                {isLogin&&<div style={{color:'white',cursor:'pointer',marginRight:'20px'}} onClick={
+                {isLogin&&<button style={{color:'white',cursor:'pointer',marginRight:'20px'}} onClick={
                     ()=>{handlelogout()
                     window.scroll(0,0)
-                }}>로그아웃</div>}
-                {isAdmin&&<div style={{color:'red'}} onClick={()=>{
+                }}>로그아웃</button>}
+                {isAdmin&&<button style={{color:'red'}} onClick={()=>{
                     Swal.fire({
                         title:'기능 준비중입니다',
                         icon:'warning'
                     })
-                }} >관리자용 페이지</div>}
+                }} >관리자용 페이지</button>}
 
             </div>      
         </div>       
