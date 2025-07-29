@@ -30,10 +30,14 @@ export const Footer = () => {
 
             {/* 푸터 오른쪽 내용. */}
             <div style={{marginTop:'10px'}}>
-                <p><a style={{textDecoration:'none', color:'black'}} href="https://github.com/isak9975"><FaGithub fontSize={30} /> GitHub</a></p>
-                <p><a style={{textDecoration:'none', color:'black'}} href="https://velog.io/@isak9975/posts"><SiVelog fontSize={30} /> Velog</a></p>
-                <p><FaReact fontSize={30} /> React /<BiLogoSpringBoot fontSize={30} /> Spring Boot</p>
+                <p><a style={{textDecoration:'none', color:'black'}} target="_blank"
+                    rel="noopener noreferrer" href="https://github.com/isak9975"><FaGithub style={{fontSize:30}}/> GitHub</a></p>
+                <p><a style={{textDecoration:'none', color:'black'}} target="_blank"
+                    rel="noopener noreferrer" href="https://velog.io/@isak9975/posts"><SiVelog style={{fontSize:30}} /> Velog</a></p>
+                <p><FaReact style={{fontSize:30}} /> React /<BiLogoSpringBoot style={{fontSize:30}} /> Spring Boot</p>
+                <button>title</button>
             </div>
         </div>
+        
     )
 }
