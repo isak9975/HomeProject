@@ -31,6 +31,7 @@ const AppLayout = () => {
             .then(text => {
                 console.log(text)
                 setData(text)})
+                console.log(data)
             .catch(err => console.error(err));
 
 
@@ -41,7 +42,7 @@ const AppLayout = () => {
             setBoard(result)
         }
         findData()
-    }, [])
+    }, [data])
 
     const [board, setBoard] = useState('');
 
