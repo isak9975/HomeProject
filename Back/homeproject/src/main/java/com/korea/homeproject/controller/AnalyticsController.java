@@ -12,7 +12,9 @@ import java.io.IOException;
 public class AnalyticsController {
 
     private static final String PROPERTY_ID = "497710939"; // GA4 속성 ID 입력
-    private static final String KEY_FILE_PATH = "src/main/resources/service-account.json"; // 서비스 계정 JSON 키 경로
+//    private static final String KEY_FILE_PATH = "src/main/resources/service-account.json"; // 서비스 계정 JSON 키 경로
+    private static final String KEY_FILE_PATH = "/home/ubuntu/service-account.json";
+
 
     @GetMapping("/analytics/visitors")
     public String getVisitors() throws IOException {
