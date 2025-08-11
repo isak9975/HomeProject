@@ -38,6 +38,10 @@ jobs:
       source: "./Back/homeproject/build/libs/homeproject-0.0.1-SNAPSHOT.jar"
       target: "/home/ubuntu/"
 
+  - name: Create service-account.json file
+    run: echo "${{ secrets.SERVICE_ACCOUNT_JSON }}" > service-account.json
+
+
   - name: Execute SSH Commands on EC2
     uses: appleboy/ssh-action@v1.0.0
     with:
