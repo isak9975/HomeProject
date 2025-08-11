@@ -43,6 +43,7 @@ public class SecurityConfig {
 							"/board/**",
 							"/s3/**",
 							"/mail/send",
+							"/analytics/visitors",
 							"/auth/**",
 							"/swagger-ui/**",
 							"/swagger-ui.html",
@@ -87,3 +88,4 @@ public class SecurityConfig {
 	}
 	
 }
+

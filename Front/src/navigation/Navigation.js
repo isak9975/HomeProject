@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Outlet, Route, Routes,Link, useLocation } from 'react-router-dom'
+import { Outlet, Route, Routes, Link} from 'react-router-dom'
 import { Login } from '../pages/auth/Login'
 import { Register } from '../pages/auth/Register'
 import { Main } from '../pages/common/Main'
@@ -13,10 +13,9 @@ import { NewPassword } from '../pages/auth/NewPassword';
 import { BlogNavigation } from './BlogNavigation';
 import { BlogWrite } from '../pages/blog/BlogWrite';
 import { BlogDetail } from '../pages/blog/BlogDetail';
-import { Blog } from '../pages/blog/Blog' 
+import { Blog } from '../pages/blog/Blog'
 import { BlogUpdate } from '../pages/blog/BlogUpdate';
 import { API } from '../pages/common/API';
-import ReactGa from 'react-ga4';
 import './Navigation.css'
 
 
@@ -24,41 +23,40 @@ import './Navigation.css'
 
 const AppLayout = () => {
 
-    ReactGa.initialize("G-9GZYCMFFHY");
+    const [data, setData] = useState("");
 
-    const location = useLocation();
+    useEffect(() => {
+        fetch(`${API}/analytics/visitors`)
+            .then(res => res.text()) // String 응답이므로 text() 사용
+            .then(text => {
+                console.log(text)
+                setData(text)})
+            .catch(err => console.error(err));
 
-    useEffect(()=>{
-        ReactGa.send({
-            hitType:'pageview',
-            page:location.pathname + location.search,
-        });
-    },[location])
 
-    useEffect(()=>{
         const findData = async () => {
             const response = await fetch(`${API}/board`)
-            const result  = await response.json();
+            const result = await response.json();
 
             setBoard(result)
         }
         findData()
-    },[])
+    }, [])
 
-    const [board,setBoard] = useState('');
+    const [board, setBoard] = useState('');
 
-    const {isLogin,user} = useContext(UserContext);
+    const { isLogin, user } = useContext(UserContext);
 
-    const [isLarge,setIsLarge] = useState(window.innerWidth >= 1040);
+    const [isLarge, setIsLarge] = useState(window.innerWidth >= 1040);
 
     const handleResize = () => {
-        setIsLarge(window.innerWidth>=1040);
+        setIsLarge(window.innerWidth >= 1040);
     }
 
-    useEffect(()=>{
-        window.addEventListener('resize',handleResize);
-        return () => window.removeEventListener('resize',handleResize);
-    },[]);
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
 
     const ShowOffcanvas = () => {
@@ -76,10 +74,10 @@ const AppLayout = () => {
                     <li><Link to={'/'} onClick={() => window.scroll(0, 0)}>Home</Link></li>
                     <li>
                         <Link to={'/blog/total'} onClick={() => window.scroll(0, 0)}>DevBoard</Link>
-                            <ul className="nblogsubmenu">
-                                <li><Link to={'/blog/infomation'} onClick={() => window.scroll(0, 0)}>Infomation</Link></li>
-                                <li><Link to={'/blog/error'} onClick={() => window.scroll(0, 0)}>Error</Link></li>
-                                <li><Link to={'/blog/lounge'} onClick={() => window.scroll(0, 0)}>Lounge</Link></li>
+                        <ul className="nblogsubmenu">
+                            <li><Link to={'/blog/infomation'} onClick={() => window.scroll(0, 0)}>Infomation</Link></li>
+                            <li><Link to={'/blog/error'} onClick={() => window.scroll(0, 0)}>Error</Link></li>
+                            <li><Link to={'/blog/lounge'} onClick={() => window.scroll(0, 0)}>Lounge</Link></li>
                             <li><Link to={'/blog/review'} onClick={() => window.scroll(0, 0)}>Review</Link></li>
                         </ul>
                     </li>
@@ -98,44 +96,44 @@ const AppLayout = () => {
         )
     }
 
-    
-    return(
-        <div className={isLarge?'nmainwithsidebar':'nmain'}
-        >
-            {isLarge&&<ShowOffcanvas/>}
-            {/* 헤더 */}
-            <Header/>
 
-                {/* 하위 요소들 나올 위치. */}
-                <Outlet/>
+    return (
+        <div className={isLarge ? 'nmainwithsidebar' : 'nmain'}
+        >
+            {isLarge && <ShowOffcanvas />}
+            {/* 헤더 */}
+            <Header />
+
+            {/* 하위 요소들 나올 위치. */}
+            <Outlet />
 
             {/* 푸터 */}
-            <Footer/>
+            <Footer />
         </div>
     )
 }
 
 
-export const Navigation = () =>{
-    return(
+export const Navigation = () => {
+    return (
         <div>
             <Routes>
                 {/* 인증 */}
-                <Route path='/login' element={<Login/>} />
-                <Route path='/register' element={<Register/>} />
-                <Route path='/findpassword' element={<FindPassword/>} />
-                <Route path='/newpassword' element={<NewPassword/>} />
-                <Route path='/finduserid' element={<FindUserId/>} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/findpassword' element={<FindPassword />} />
+                <Route path='/newpassword' element={<NewPassword />} />
+                <Route path='/finduserid' element={<FindUserId />} />
 
-                <Route path='/' element={<AppLayout/>} >
-                    <Route index element={<Main/>} />
-                    <Route path='contact' element={<Contact />}/>
-                    
+                <Route path='/' element={<AppLayout />} >
+                    <Route index element={<Main />} />
+                    <Route path='contact' element={<Contact />} />
+
                     <Route path='blog' element={<BlogNavigation />}>
-                        <Route path=':category' element={<Blog/>}/>
-                        <Route path='write/:category' element={<BlogWrite />}/>
-                        <Route path='detail/:boardNo' element={<BlogDetail />}/>
-                        <Route path='update/:boardNo' element={<BlogUpdate />}/>
+                        <Route path=':category' element={<Blog />} />
+                        <Route path='write/:category' element={<BlogWrite />} />
+                        <Route path='detail/:boardNo' element={<BlogDetail />} />
+                        <Route path='update/:boardNo' element={<BlogUpdate />} />
                     </Route>
                 </Route>
             </Routes>

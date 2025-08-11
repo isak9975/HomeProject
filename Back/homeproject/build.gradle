@@ -58,6 +58,14 @@ dependencies {
     
 	// 이메일 전송
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	
+	//AnalticsController
+	implementation 'com.google.analytics:google-analytics-data:0.41.0'
+	
+    // Google 인증 라이브러리 (OAuth2)
+    implementation 'com.google.auth:google-auth-library-oauth2-http:1.19.0'
+
+	
 }
 
 tasks.named('test') {

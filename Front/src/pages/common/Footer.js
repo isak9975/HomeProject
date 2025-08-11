@@ -35,7 +35,6 @@ export const Footer = () => {
                 <p><a style={{textDecoration:'none', color:'black'}} target="_blank"
                     rel="noopener noreferrer" href="https://velog.io/@isak9975/posts"><SiVelog style={{fontSize:30}} /> Velog</a></p>
                 <p><FaReact style={{fontSize:30}} /> React /<BiLogoSpringBoot style={{fontSize:30}} /> Spring Boot</p>
-                <button>title</button>
             </div>
         </div>
         
