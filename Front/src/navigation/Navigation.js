@@ -27,11 +27,10 @@ const AppLayout = () => {
 
     useEffect(() => {
         fetch(`${API}/analytics/visitors`)
-            .then(res => res.text()) // String 응답이므로 text() 사용
+            .then(res => res.json()) // String 응답이므로 text() 사용
             .then(text => {
-                console.log(text)
+                console.log(text.dailyVisitors[0])
                 setData(text)
-                console.log(data)
             })
             .catch(err => console.error(err));
 
@@ -43,7 +42,7 @@ const AppLayout = () => {
             setBoard(result)
         }
         findData()
-    }, [data])
+    }, [])
 
     const [board, setBoard] = useState('');
 
@@ -91,8 +90,8 @@ const AppLayout = () => {
 
                 <div className="nstate">
                     <div className="nstateitem"><span>총 포스트 :</span><span>{board?.length}</span></div>
-                    <div className="nstateitem"><span>총 조회수 :</span><span>100</span></div>
-                    <div className="nstateitem"><span>오늘방문 :</span><span>45</span></div>
+                    <div className="nstateitem"><span>총 조회수 :</span><span>{data?.totalVisitors}</span></div>
+                    <div className="nstateitem"><span>오늘 방문 :</span><span>{data?.dailyVisitors[0]?.visitors}</span></div>
                 </div>
             </aside>
         )
