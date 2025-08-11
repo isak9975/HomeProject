@@ -69,10 +69,10 @@ public class SecurityConfig {
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();
-		config.setAllowedOrigins(List.of("http://localhost:3000","http://homeproject-back.s3-website.ap-northeast-2.amazonaws.com/"));
-		config.setAllowedMethods(List.of("GET","PUT","DELETE","POST"));
+		config.setAllowedOrigins(List.of("http://localhost:3000","http://homeproject-back.s3-website.ap-northeast-2.amazonaws.com"));
+//		config.setAllowedMethods(List.of("GET","PUT","DELETE","POST"));
 		config.setAllowCredentials(true);
-		config.addAllowedHeader("*");
+//		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		config.setAllowedHeaders(List.of("*"));
 		

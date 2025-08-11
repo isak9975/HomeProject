@@ -30,8 +30,9 @@ const AppLayout = () => {
             .then(res => res.text()) // String 응답이므로 text() 사용
             .then(text => {
                 console.log(text)
-                setData(text)})
+                setData(text)
                 console.log(data)
+            })
             .catch(err => console.error(err));
 
 
